@@ -21,8 +21,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@capacitor-community/sqlite": "^5.5.1-2",
 		"@capacitor/core": "^5.6.0",
-		"@ptkdev/sveltekit-cordova-adapter": "^0.3.1"
+		"@ptkdev/sveltekit-cordova-adapter": "^0.3.1",
+		"svelte-capacitor-store": "^0.3.5"
 	}
 }

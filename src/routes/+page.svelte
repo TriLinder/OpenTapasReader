@@ -1,15 +1,17 @@
 <script lang="ts">
-    import { CapacitorHttp } from '@capacitor/core';
+    import { variableStore } from 'svelte-capacitor-store';
+    
+    const count = variableStore<number>({
+        storeName: "counter",
+        persist: true,
+        initialValue: 0
+    });
 
-    let data = "";
-
-    async function testCapacitorHttp() {
-        const response = await CapacitorHttp.get({url: "https://jsonplaceholder.typicode.com/posts/1"});
-
-        data = JSON.stringify(response.data);
+    function countUp() {
+        $count += 1;
     }
 </script>
 
 <h1>Hello, world!</h1>
-<button on:click={testCapacitorHttp}>CapacitorHTTP</button> <br>
-<code>{data}</code>
+
+<button on:click={countUp}>Pressed {$count} times</button>
