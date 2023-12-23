@@ -1,3 +1,4 @@
+import { CapacitorHttp } from '@capacitor/core';
 import hash from 'object-hash';
 
 import { mediaStore, urlToHashStore } from "../../../stores";
@@ -20,23 +21,13 @@ export async function loadMedia(url: string, storeOffline=false): Promise<string
 
     // Alright, it's not stored locally.
     // Let's fetch it from the internet.
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        throw Error(`Failed to fetch media: ${response.statusText}`);
+    const response = await CapacitorHttp.get({url: url, responseType: "blob"});
+    
+    if (response.status != 200) {
+        throw Error(`Failed to fetch media: status ${response.status}`);
     }
 
-    // Convert the response to a blob and read it as a data URL
-    const blob = await response.blob();
-    const reader = new FileReader();
-    
-    const base64Promise: Promise<string> = new Promise((resolve, reject) => {
-        reader.onloadend = () => resolve(reader.result as string);
-        reader.onerror = reject;
-    });
-
-    reader.readAsDataURL(blob);
-    const base64DataUrl = await base64Promise;
+    const base64DataUrl = `data:media;base64,${response.data}`;
     
     // We now have the data url. Check if we want to store it for offline use.
     if (storeOffline) {
