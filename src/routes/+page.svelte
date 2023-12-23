@@ -4,6 +4,12 @@
     import Library from "$lib/components/pages/Library/Library.svelte";
 </script>
 
+<style>
+    :global(*) {
+        font-family: Roboto;
+    }
+</style>
+
 <noscript>
     <h1>JavaScript required!</h1>
     <p>Please enable JavaScript and reload the page.</p>

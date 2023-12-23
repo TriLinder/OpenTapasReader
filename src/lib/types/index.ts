@@ -1,6 +1,7 @@
 // Stores
 export type PageStateStore = {
-    currentPage: string;
+    currentPage: "library" | "seriesDetail";
+    seriesDetailPageSeries: Series | null
 }
 
 export type MediaStore = {
