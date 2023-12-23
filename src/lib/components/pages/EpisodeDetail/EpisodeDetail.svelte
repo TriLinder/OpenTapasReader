@@ -40,9 +40,12 @@
 <style>
     .content {
         display: flex;
-        width: 100%;
         flex-direction: column;
-        margin-top: 50px;
+
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
     }
 
     .app-bar {
@@ -54,6 +57,15 @@
     .continue-next-episode {
         text-align: center;
         margin-top: 25px;
+    }
+
+    .description {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    h2 {
+        text-align: center;
     }
 </style>
 
@@ -85,14 +97,19 @@
                 <Image src={imgSrc} storeOffline/>
             {/each}
         {/key}
-    </div>
 
-    {#if episode.nextEpisodeId}
-        <div class="continue-next-episode">
-            <Card padded variant="outlined">
-                <p>Continue to the next episode!</p>
-                <Button variant="raised" on:click={nextEpisode}>Next episode</Button>
-            </Card>
+        <div class="description">
+            <h2>Description:</h2>
+            <p>{episode.description}</p>
         </div>
-    {/if}
+
+        {#if episode.nextEpisodeId}
+            <div class="continue-next-episode">
+                <Card padded variant="outlined">
+                    <p>Continue to the next episode!</p>
+                    <Button variant="raised" on:click={nextEpisode}>Next episode</Button>
+                </Card>
+            </div>
+        {/if}
+    </div>
 {/if}
