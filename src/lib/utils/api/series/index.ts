@@ -41,6 +41,7 @@ export async function getEpisodes(seriesId: number): Promise<Episode[]> {
     for (const episode of response) {
         episodes.push({
             id: episode.id,
+            seriesId: seriesId,
             title: episode.title,
             creationDate: episode.created_date,
             scheduledDate: episode.scheduled_date,

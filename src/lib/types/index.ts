@@ -15,6 +15,11 @@ export type UrlToHashStore = {
     urls: Record<string, string>;
 }
 
+export type EpisodeStore = {
+    dataTypeVersion: number;
+    episodes: Record<number, Episode>;
+}
+
 // Tapas
 export type TapasUser = {
     id: number;
@@ -38,6 +43,7 @@ export type Series = {
 
 export type Episode = {
     id: number;
+    seriesId: number;
     title: string;
     creationDate: string;
     scheduledDate: string | null;
