@@ -25,5 +25,6 @@ export const urlToHashStore = objectStore<UrlToHashStore>({
 
 export const pageStateStore = writable<PageStateStore>({
     currentPage: "library",
-    seriesDetailPageSeries: null
+    seriesDetailPageSeries: null,
+    episodeDetailPageEpsiode: null
 });

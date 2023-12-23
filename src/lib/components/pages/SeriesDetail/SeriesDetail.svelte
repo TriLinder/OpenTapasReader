@@ -1,11 +1,18 @@
 <script lang="ts">
     import { pageStateStore } from "../../../../stores";
+    import { onMount } from "svelte";
 
     import Tab, { Label } from '@smui/tab';
     import TabBar from '@smui/tab-bar';
+    import Episodes from "./Episodes.svelte";
 
     let activeTab = "episodes";
     $: series = $pageStateStore.seriesDetailPageSeries!;
+    $: isBookmarked = false;
+
+    onMount(function() {
+        
+    });
 </script>
 
 <style>
@@ -30,7 +37,7 @@
 </TabBar>
 
 {#if activeTab == "episodes"}
-    episodes
+    <Episodes {series}/>
 {:else if activeTab == "detail"}
     detail
 {/if}

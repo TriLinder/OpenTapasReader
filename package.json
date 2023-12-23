@@ -34,6 +34,7 @@
 		"@ptkdev/sveltekit-cordova-adapter": "^0.3.1",
 		"object-hash": "^3.0.0",
 		"svelte-capacitor-store": "^0.3.5",
+		"svelte-lazy": "^1.2.5",
 		"svelte-portal": "^2.2.0"
 	}
 }
