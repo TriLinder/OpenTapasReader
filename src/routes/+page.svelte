@@ -2,6 +2,7 @@
     import { pageStateStore } from "../stores";
 
     import Library from "$lib/components/pages/Library/Library.svelte";
+    import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
 </script>
 
 <style>
@@ -17,6 +18,8 @@
 
 {#if $pageStateStore.currentPage == "library"}
     <Library/>
+{:else if $pageStateStore.currentPage == "seriesDetail"}
+    <SeriesDetail/>
 {:else}
     <h1>Unknown page!</h1>
     <p>Something has gone wrong.</p>
