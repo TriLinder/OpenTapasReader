@@ -10,6 +10,11 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@capacitor/app@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-5.0.6.tgz#2ee02551115fd2e92dc7e81bc30a6c6fa78efa66"
+  integrity sha512-6ZXVdnNmaYILasC/RjQw+yfTmq2ZO7Q3v5lFcDVfq3PFGnybyYQh+RstBrYri+376OmXOXxBD7E6UxBhrMzXGA==
+
 "@capacitor/cli@^5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-5.6.0.tgz#83fb1303ae1bd977622a4f55d3e1cec96378c475"

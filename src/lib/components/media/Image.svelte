@@ -6,14 +6,25 @@
     export let storeOffline = false;
 
     let dataUrl = "";
+    let failed = false;
 
     onMount(async function() {
-        dataUrl = await loadMedia(src, storeOffline);
+        try {
+            dataUrl = await loadMedia(src, storeOffline);
+        } catch (error: any) {
+            console.error(error);
+            failed = true;
+            return;
+        }
     });
 </script>
 
 {#if dataUrl}
     <img src={dataUrl}>
 {:else}
-    <span>Loading..</span>
+    {#if !failed}
+        <img src="/image-component/loading.png">
+    {:else}
+    <img src="/image-component/error.png">
+    {/if}
 {/if}
