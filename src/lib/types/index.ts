@@ -1,4 +1,8 @@
 // Stores
+export type PageStateStore = {
+    currentPage: string
+}
+
 export type MediaStore = {
     dataTypeVersion: number,
     media: Record<string, string>
