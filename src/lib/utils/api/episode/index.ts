@@ -19,6 +19,16 @@ export async function loadEpisode(seriesId: number, episodeId: number, storeOffl
         contentImageUrls.push(image.file_url);
     }
 
+    let previousEpisodeId = null;
+    if (response.prev_episode) {
+        previousEpisodeId = response.prev_episode.id;
+    }
+
+    let nextEpisodeId = null;
+    if (response.next_episode) {
+        nextEpisodeId = response.next_episode.id;
+    }
+
     const episode: Episode = {
         id: response.id,
         seriesId: seriesId,
@@ -29,7 +39,9 @@ export async function loadEpisode(seriesId: number, episodeId: number, storeOffl
         description: response.description,
         commentCount: response.comment_cnt,
         likeCount: response.like_cnt,
-        contentImageUrls: contentImageUrls
+        contentImageUrls: contentImageUrls,
+        previousEpisodeId: previousEpisodeId,
+        nextEpisodeId: nextEpisodeId
     }
 
     // Alright, we've got the Episode object.

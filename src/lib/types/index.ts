@@ -2,7 +2,7 @@
 export type PageStateStore = {
     currentPage: "library" | "seriesDetail" | "episodeDetail";
     seriesDetailPageSeries: Series | null;
-    episodeDetailPageEpsiode: Episode | null;
+    episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null;
 }
 
 export type MediaStore = {
@@ -52,4 +52,6 @@ export type Episode = {
     commentCount: number;
     likeCount: number;
     contentImageUrls: string[];
+    previousEpisodeId: number | null;
+    nextEpisodeId: number | null;
 }

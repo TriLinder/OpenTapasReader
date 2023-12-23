@@ -324,6 +324,20 @@
     "@material/typography" "^14.0.0"
     tslib "^2.1.0"
 
+"@material/card@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@material/card/-/card-14.0.0.tgz#81a8d201bbfb37cbb4d0b738cb55f23da787c643"
+  integrity sha512-SnpYWUrCb92meGYLXV7qa/k40gnHR6rPki6A1wz0OAyG2twY48f0HLscAqxBLvbbm1LuRaqjz0RLKGH3VzxZHw==
+  dependencies:
+    "@material/dom" "^14.0.0"
+    "@material/elevation" "^14.0.0"
+    "@material/feature-targeting" "^14.0.0"
+    "@material/ripple" "^14.0.0"
+    "@material/rtl" "^14.0.0"
+    "@material/shape" "^14.0.0"
+    "@material/theme" "^14.0.0"
+    tslib "^2.1.0"
+
 "@material/density@^14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@material/density/-/density-14.0.0.tgz#584c4f3468c86c96e361ebe7ba6723f4aa6cd548"
@@ -486,6 +500,21 @@
   dependencies:
     "@material/elevation" "^14.0.0"
 
+"@material/top-app-bar@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@material/top-app-bar/-/top-app-bar-14.0.0.tgz#54e09247c33f61f8f3e98016990e53102c4a4410"
+  integrity sha512-uPej5vHgZnlSB1+koiA9FnabXrHh3O/Npl2ifpUgDVwHDSOxKvLp2LNjyCO71co1QLNnNHIU0xXv3B97Gb0rpA==
+  dependencies:
+    "@material/animation" "^14.0.0"
+    "@material/base" "^14.0.0"
+    "@material/elevation" "^14.0.0"
+    "@material/ripple" "^14.0.0"
+    "@material/rtl" "^14.0.0"
+    "@material/shape" "^14.0.0"
+    "@material/theme" "^14.0.0"
+    "@material/typography" "^14.0.0"
+    tslib "^2.1.0"
+
 "@material/touch-target@^14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@material/touch-target/-/touch-target-14.0.0.tgz#66b0b61ff14975946cdbf6fad6627bcbc025423d"
@@ -619,6 +648,18 @@
     "@smui/ripple" "^7.0.0-beta.15"
     svelte2tsx "^0.6.21"
 
+"@smui/card@^7.0.0-beta.15":
+  version "7.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@smui/card/-/card-7.0.0-beta.15.tgz#1dfce49a50593565b6e086c75cad27f6d3196df2"
+  integrity sha512-fGBpgmO3N5kDz5oTFxqIF++ks8/h9I1ef0yD2OgyTYQ5vzYb+N/5NRmjV9g8QitPV2BRYeRLkrOYfn3nnjOCBg==
+  dependencies:
+    "@material/card" "^14.0.0"
+    "@smui/button" "^7.0.0-beta.15"
+    "@smui/common" "^7.0.0-beta.15"
+    "@smui/icon-button" "^7.0.0-beta.15"
+    "@smui/ripple" "^7.0.0-beta.15"
+    svelte2tsx "^0.6.21"
+
 "@smui/common@^7.0.0-beta.15":
   version "7.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@smui/common/-/common-7.0.0-beta.15.tgz#29d23c4751d93b10a10315be10479cebda083eef"
@@ -687,6 +728,16 @@
     "@smui/common" "^7.0.0-beta.15"
     "@smui/ripple" "^7.0.0-beta.15"
     "@smui/tab-indicator" "^7.0.0-beta.15"
+    svelte2tsx "^0.6.21"
+
+"@smui/top-app-bar@^7.0.0-beta.15":
+  version "7.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@smui/top-app-bar/-/top-app-bar-7.0.0-beta.15.tgz#00150f82cc64c2a4efb33c63b59a8b39dc2853c6"
+  integrity sha512-9b5DL+VExBIyTTnO2RUokHzn2Dp00GJ2dnI9j/OR7Ha44ry8Yd89ozjJdYcuR+JxPi10N3iILFtwuSZxMS1y+w==
+  dependencies:
+    "@material/feature-targeting" "^14.0.0"
+    "@material/top-app-bar" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.15"
     svelte2tsx "^0.6.21"
 
 "@sveltejs/kit@^2.0.0":

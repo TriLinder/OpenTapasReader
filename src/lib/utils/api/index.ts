@@ -1,7 +1,7 @@
 import { CapacitorHttp } from '@capacitor/core';
 import type { HttpOptions } from '@capacitor/core';
 
-export const API_BASE_URL = "http://127.0.0.1:8000/v3"
+export const API_BASE_URL = "https://api.tapas.io/v3"
 
 export async function getRequest(path: string, expectedResponseStatus = 200) {
     const options: HttpOptions = {

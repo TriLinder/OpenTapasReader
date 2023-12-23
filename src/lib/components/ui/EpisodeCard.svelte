@@ -11,7 +11,7 @@
 
     function onClick() {
         $pageStateStore.currentPage = "episodeDetail";
-        $pageStateStore.episodeDetailPageEpsiode = episode;
+        $pageStateStore.episodeDetailPageEpsiode = {seriesId: episode.seriesId, episodeId: episode.id};
     }
 </script>
 

@@ -49,7 +49,9 @@ export async function getEpisodes(seriesId: number): Promise<Episode[]> {
             description: "",
             commentCount: -1,
             likeCount: -1,
-            contentImageUrls: []
+            contentImageUrls: [],
+            previousEpisodeId: null,
+            nextEpisodeId: null
         });
     }
     

@@ -14,10 +14,12 @@
 	"devDependencies": {
 		"@capacitor/cli": "^5.6.0",
 		"@smui/button": "^7.0.0-beta.15",
+		"@smui/card": "^7.0.0-beta.15",
 		"@smui/icon-button": "^7.0.0-beta.15",
 		"@smui/ripple": "^7.0.0-beta.15",
 		"@smui/tab": "^7.0.0-beta.15",
 		"@smui/tab-bar": "^7.0.0-beta.15",
+		"@smui/top-app-bar": "^7.0.0-beta.15",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/object-hash": "^3.0.6",
