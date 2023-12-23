@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { browser } from "$app/environment";
     import { loadEpisode } from "$lib/utils/api/episode";
+    import { pageStateStore } from "../../../../stores";
     import type { Episode } from "$lib/types";
 
     import Image from "$lib/components/media/Image.svelte";
@@ -9,9 +9,7 @@
     let episode: Episode | null = null;
 
     onMount(async function() {
-        if (browser) {
-            episode = await loadEpisode(35242, 780721);
-        }
+        episode = await loadEpisode($pageStateStore.episodeDetailPageEpsiode!.seriesId, $pageStateStore.episodeDetailPageEpsiode!.id);
     });
 </script>
 

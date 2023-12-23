@@ -22,5 +22,9 @@ export async function getRequest(path: string, expectedResponseStatus = 200) {
         throw new Error(`Unexpected response status: ${response.status}`);
     }
 
-    return response.data;
+    if (typeof response.data === "string") {
+        return JSON.parse(response.data);
+    } else {
+        return response.data;
+    }
 }
