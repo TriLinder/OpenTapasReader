@@ -5,11 +5,6 @@ export type PageStateStore = {
     episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null;
 }
 
-export type MediaStore = {
-    dataTypeVersion: number;
-    media: Record<string, string>;
-}
-
 export type UrlToHashStore = {
     dataTypeVersion: number;
     urls: Record<string, string>;

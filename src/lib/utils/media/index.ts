@@ -1,21 +1,43 @@
 import { CapacitorHttp } from '@capacitor/core';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import hash from 'object-hash';
 
-import { mediaStore, urlToHashStore } from "../../../stores";
+import { urlToHashStore } from "../../../stores";
 import { get } from "svelte/store";
+
+async function loadMediaFromStorage(hash: string): Promise<string> {
+    const loadedFile = await Filesystem.readFile({
+        directory: Directory.Data,
+        path: `/media/${hash}`
+    });
+
+    const dataUrl = JSON.parse(loadedFile.data as string).dataUrl;
+
+    return dataUrl;
+}
+
+async function saveMediaToStorage(hash: string, dataUrl: string) {
+    await Filesystem.writeFile({
+        directory: Directory.Data,
+        path: `/media/${hash}`,
+        data: JSON.stringify({"dataUrl": dataUrl}),
+        encoding: Encoding.ASCII,
+        recursive: true
+    });
+}
 
 // Loads a media file (for example an image) from a URL and returns its data url
 export async function loadMedia(url: string, storeOffline=false): Promise<string> {
     // First, let's check if the media is already stored offline
     if (url in get(urlToHashStore).urls) {
         // Great! We already do have a hash stored for this url. That probably means
-        // we'll have the media stored too. Let's check.
-        const hash = get(urlToHashStore).urls[url];
+        // we'll have the media stored too. Let's try to load it!
+        const mediaHash = get(urlToHashStore).urls[url];
 
-        if (hash in get(mediaStore).media) {
-            // We have the media stored locally! Let's return it from the
-            // media store.
-            return get(mediaStore).media[hash];
+        try {
+            return await loadMediaFromStorage(mediaHash);
+        } catch {
+            console.warn("Failed to load media from storage.");
         }
     }
 
@@ -33,16 +55,14 @@ export async function loadMedia(url: string, storeOffline=false): Promise<string
     if (storeOffline) {
         // Alright, we first need to generate a SHA1 hash from the data url
         const mediaHash = hash.sha1(base64DataUrl);
-
+        
         // Now let's save to the URL -> hash store
         const urlToHashStoreValue = get(urlToHashStore);
         urlToHashStoreValue.urls[url] = mediaHash;
         urlToHashStore.set(urlToHashStoreValue);
 
-        // And now let's finally save the data url to the mediaStore
-        const mediaStoreValue = get(mediaStore);
-        mediaStoreValue.media[mediaHash] = base64DataUrl;
-        mediaStore.set(mediaStoreValue);
+        // And we can finally save it to storage
+        await saveMediaToStorage(mediaHash, base64DataUrl);
     }
 
     return base64DataUrl;
