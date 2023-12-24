@@ -25,6 +25,6 @@
     {#if !failed}
         <img src="/image-component/loading.png">
     {:else}
-    <img src="/image-component/error.png">
+        <img src="/image-component/error.png">
     {/if}
 {/if}
