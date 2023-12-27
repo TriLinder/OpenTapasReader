@@ -22,7 +22,7 @@ export const episodeStore = objectStore<EpisodeStore>({
 });
 
 export const pageStateStore = writable<PageStateStore>({
-    currentPage: "library",
+    currentPage: "loading",
     seriesDetailPageSeries: null,
     episodeDetailPageEpsiode: null
 });

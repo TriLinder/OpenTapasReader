@@ -1,6 +1,7 @@
 <script lang="ts">
     import { pageStateStore } from "../stores";
 
+    import Loading from "$lib/components/pages/Loading/Loading.svelte";
     import Library from "$lib/components/pages/Library/Library.svelte";
     import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
     import EpisodeDetail from "$lib/components/pages/EpisodeDetail/EpisodeDetail.svelte";
@@ -17,7 +18,9 @@
     <p>Please enable JavaScript and reload the page.</p>
 </noscript>
 
-{#if $pageStateStore.currentPage == "library"}
+{#if $pageStateStore.currentPage == "loading"}
+    <Loading/>
+{:else if $pageStateStore.currentPage == "library"}
     <Library/>
 {:else if $pageStateStore.currentPage == "seriesDetail"}
     <SeriesDetail/>

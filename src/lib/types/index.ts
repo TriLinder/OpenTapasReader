@@ -1,6 +1,6 @@
 // Stores
 export type PageStateStore = {
-    currentPage: "library" | "seriesDetail" | "episodeDetail";
+    currentPage: "loading" | "library" | "seriesDetail" | "episodeDetail";
     seriesDetailPageSeries: Series | null;
     episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null;
 }
