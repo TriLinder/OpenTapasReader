@@ -3,6 +3,7 @@
 
     import Loading from "$lib/components/pages/Loading/Loading.svelte";
     import Library from "$lib/components/pages/Library/Library.svelte";
+    import Search from "$lib/components/pages/Search/Search.svelte";
     import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
     import EpisodeDetail from "$lib/components/pages/EpisodeDetail/EpisodeDetail.svelte";
 </script>
@@ -22,6 +23,8 @@
     <Loading/>
 {:else if $pageStateStore.currentPage == "library"}
     <Library/>
+{:else if $pageStateStore.currentPage == "search"}
+    <Search/>
 {:else if $pageStateStore.currentPage == "seriesDetail"}
     <SeriesDetail/>
 {:else if $pageStateStore.currentPage == "episodeDetail"}
