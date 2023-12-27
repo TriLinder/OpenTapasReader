@@ -12,6 +12,7 @@
 <style>
     :global(*) {
         font-family: Roboto;
+        user-select: none;
     }
 </style>
 
