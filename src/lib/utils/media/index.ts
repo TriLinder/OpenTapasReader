@@ -5,22 +5,32 @@ import hash from 'object-hash';
 import { urlToHashStore } from "../../../stores";
 import { get } from "svelte/store";
 
+type MediaFile = {
+    savedTimestamp: string,
+    dataUrl: string
+}
+
 async function loadMediaFromStorage(hash: string): Promise<string> {
     const loadedFile = await Filesystem.readFile({
         directory: Directory.Data,
-        path: `/media/${hash}`
+        path: `/media/${hash}`,
+        encoding: Encoding.ASCII
     });
 
-    const dataUrl = JSON.parse(loadedFile.data as string).dataUrl;
+    const mediaFile: MediaFile = JSON.parse(loadedFile.data as string);
 
-    return dataUrl;
+    return mediaFile.dataUrl;
 }
 
 async function saveMediaToStorage(hash: string, dataUrl: string) {
+    const mediaFile: MediaFile = {
+        savedTimestamp: new Date().toString(),
+        dataUrl: dataUrl
+    }
     await Filesystem.writeFile({
         directory: Directory.Data,
         path: `/media/${hash}`,
-        data: JSON.stringify({"dataUrl": dataUrl}),
+        data: JSON.stringify(mediaFile),
         encoding: Encoding.ASCII,
         recursive: true
     });
