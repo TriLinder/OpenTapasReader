@@ -9,6 +9,7 @@
     import type { Episode } from "$lib/types";
 
     export let episode: Episode;
+    export let storeThubmnailOffline = false;
 
     function onClick() {
         $pageStateStore.currentPage = "episodeDetail";
@@ -61,7 +62,7 @@
     <Lazy>
         <div class="left-side">
             <div class="thumbnail">
-                <Image src={episode.thumbnailUrl} storeOffline/>
+                <Image src={episode.thumbnailUrl} storeOffline={storeThubmnailOffline}/>
             </div>
 
             <div class="text">

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { libraryStore } from "../../../../stores";
     import type { Series, Episode } from "$lib/types";
 
     import IconButton, { Icon } from "@smui/icon-button";
@@ -14,6 +15,8 @@
     } else {
         episodes = series.episodes.toReversed();
     }
+
+    $: isSeriesInLibrary = series.id in $libraryStore.series;
 </script>
 
 <style>
@@ -32,5 +35,5 @@
 </div>
 
 {#each episodes as episode (episode.id)}
-    <EpisodeCard {episode}/>
+    <EpisodeCard {episode} storeThubmnailOffline={isSeriesInLibrary}/>
 {/each}

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { goBack } from "$lib/utils/page-history";
-    import { pageStateStore } from "../../../../stores";
+    import { pageStateStore, libraryStore } from "../../../../stores";
+    import { addSeriesToLibrary, removeSeriesFromLibrary } from "$lib/utils/library";
 
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
@@ -11,7 +12,9 @@
     import Info from "./Info.svelte";
 
     let activeTab = "episodes";
+    
     $: series = $pageStateStore.seriesDetailPageSeries!;
+    $: isSeriesInLibrary = series.id in $libraryStore.series;
 </script>
 
 <style>
@@ -42,22 +45,28 @@
             </Section>
 
             <Section align="end">
-                <IconButton class="material-icons">bookmark</IconButton>
+                {#if !isSeriesInLibrary}
+                    <IconButton class="material-icons" on:click={function() {addSeriesToLibrary(series);}}>bookmark_border</IconButton>
+                {:else}
+                    <IconButton class="material-icons" on:click={function() {removeSeriesFromLibrary(series);}}>bookmark</IconButton>
+                {/if}
             </Section>
         </Row>
     </TopAppBar>
 </div>
 
-<div class="content">
-    <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
-        <Tab {tab}>
-        <Label>{tab}</Label>
-        </Tab>
-    </TabBar>
+{#key isSeriesInLibrary}
+    <div class="content">
+        <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
+            <Tab {tab}>
+            <Label>{tab}</Label>
+            </Tab>
+        </TabBar>
 
-    {#if activeTab == "episodes"}
-        <Episodes {series}/>
-    {:else if activeTab == "info"}
-        <Info {series}/>
-    {/if}
-</div>
+        {#if activeTab == "episodes"}
+            <Episodes {series}/>
+        {:else if activeTab == "info"}
+            <Info {series}/>
+        {/if}
+    </div>
+{/key}

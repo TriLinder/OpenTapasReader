@@ -1,8 +1,11 @@
 <script lang="ts">
+    import { libraryStore } from "../../../../stores";
     import type { Series } from "$lib/types";
+
     import Image from "$lib/components/media/Image.svelte";
 
     export let series: Series;
+    $: isSeriesInLibrary = series.id in $libraryStore.series;
 </script>
 
 <style>
@@ -75,7 +78,7 @@
 
 <div class="content">
     <div class="cover-image">
-        <Image src={series.coverImageUrl} storeOffline/>
+        <Image src={series.coverImageUrl} storeOffline={isSeriesInLibrary}/>
     </div>
 
     <h2>Description</h2>
@@ -86,7 +89,7 @@
         {#each series.creators as creator}
             <div class="creator">
                 <div class="profile-picture">
-                    <Image src={creator.profilePictureUrl} storeOffline/>
+                    <Image src={creator.profilePictureUrl} storeOffline={isSeriesInLibrary}/>
                 </div>
                 
                 <span>{creator.displayName}</span>

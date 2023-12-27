@@ -16,7 +16,7 @@ export const libraryStore = objectStore<LibraryStore>({
     storeName: "tapasClientLibraryStore",
     initialValue: {
         dataTypeVersion: 0,
-        series: []
+        series: {}
     },
     persist: true
 });

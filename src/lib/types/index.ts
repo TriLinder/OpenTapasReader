@@ -12,7 +12,7 @@ export type UrlToHashStore = {
 
 export type LibraryStore = {
     dataTypeVersion: number;
-    series: Series[];
+    series: Record<string, Series>;
 }
 
 export type EpisodeStore = {

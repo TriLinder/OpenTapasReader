@@ -22,7 +22,7 @@
 
 Welcome to the library page!
 
-{#each $libraryStore.series as series}
+{#each Object.values($libraryStore.series) as series}
     <SeriesCard {series}/>
 {/each}
 
