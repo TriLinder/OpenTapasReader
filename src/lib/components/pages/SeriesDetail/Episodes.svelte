@@ -9,8 +9,6 @@
     let reversed = true;
     let episodes: Episode[] = [];
 
-    $: isBookmarked = false;
-
     $: if (!reversed) {
         episodes = series.episodes
     } else {
