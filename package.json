@@ -43,6 +43,7 @@
 		"lodash.debounce": "^4.0.8",
 		"object-hash": "^3.0.0",
 		"svelte-capacitor-store": "^0.3.5",
+		"svelte-i18n": "^4.0.0",
 		"svelte-lazy": "^1.2.5",
 		"svelte-portal": "^2.2.0"
 	}

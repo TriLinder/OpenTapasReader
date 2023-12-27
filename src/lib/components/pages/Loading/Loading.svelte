@@ -4,14 +4,17 @@
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
 
+    import { initI18n } from "$lib/i18n";
+
     function loaded() {
         // Loaded! Switch to the starting page.
         $pageStateStore.currentPage = "library";
         commitToHistory();
     }
 
-    onMount(function() {
+    onMount(async function() {
         if (browser) {
+            await initI18n();
             loaded();
         }
     });

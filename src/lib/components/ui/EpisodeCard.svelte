@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { date } from 'svelte-i18n';
+
     import Ripple from '@smui/ripple';
     import IconButton from "@smui/icon-button";
     import EpisodeDownloadButton from './EpisodeDownloadButton.svelte';
@@ -72,7 +74,7 @@
 
                 <div class="text">
                     <h2>{episode.title}</h2>
-                    <span>date</span>
+                    <span>{$date(new Date(episode.creationDate), {format: "long"})}</span>
                 </div>
             </div>
 
