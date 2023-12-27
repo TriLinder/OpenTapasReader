@@ -6,7 +6,9 @@
     import IconButton from '@smui/icon-button';
     import Tab, { Label } from '@smui/tab';
     import TabBar from '@smui/tab-bar';
+
     import Episodes from "./Episodes.svelte";
+    import Info from "./Info.svelte";
 
     let activeTab = "episodes";
     $: series = $pageStateStore.seriesDetailPageSeries!;
@@ -47,7 +49,7 @@
 </div>
 
 <div class="content">
-    <TabBar tabs={["episodes", "detail"]} let:tab bind:active={activeTab}>
+    <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
         <Tab {tab}>
         <Label>{tab}</Label>
         </Tab>
@@ -55,7 +57,7 @@
 
     {#if activeTab == "episodes"}
         <Episodes {series}/>
-    {:else if activeTab == "detail"}
-        detail
+    {:else if activeTab == "info"}
+        <Info {series}/>
     {/if}
 </div>
