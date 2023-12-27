@@ -6,6 +6,7 @@
     import Search from "$lib/components/pages/Search/Search.svelte";
     import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
     import EpisodeDetail from "$lib/components/pages/EpisodeDetail/EpisodeDetail.svelte";
+    import EpisodeComments from "$lib/components/pages/EpisodeComments/EpisodeComments.svelte";
 </script>
 
 <style>
@@ -29,6 +30,8 @@
     <SeriesDetail/>
 {:else if $pageStateStore.currentPage == "episodeDetail"}
     <EpisodeDetail/>
+{:else if $pageStateStore.currentPage == "episodeComments"}
+    <EpisodeComments/>    
 {:else}
     <h1>Unknown page!</h1>
     <p>Something has gone wrong.</p>

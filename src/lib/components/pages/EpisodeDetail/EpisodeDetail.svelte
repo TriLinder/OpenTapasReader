@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
-    import { goBack } from "$lib/utils/page-history";
+    import { goBack, commitToHistory } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
     import type { Episode } from "$lib/types";
 
@@ -31,6 +31,12 @@
         }
     }
 
+    function openComments() {
+        $pageStateStore.episodeCommentsPageEpisode = $pageStateStore.episodeDetailPageEpsiode;
+        $pageStateStore.currentPage = "episodeComments";
+        commitToHistory();
+    }
+
     const unsubsrcibe = pageStateStore.subscribe(function() {
         if ($pageStateStore.currentPage == "episodeDetail") {
             load();
@@ -55,6 +61,8 @@
         top: 56px;
         left: 0;
         width: 100%;
+
+        overflow-x: hidden;
     }
 
     .app-bar {
@@ -91,7 +99,7 @@
 
             <Section align="end">
                 <IconButton class="material-icons">download</IconButton>
-                <IconButton class="material-icons">comments</IconButton>
+                <IconButton class="material-icons" on:click={openComments}>comments</IconButton>
                 <IconButton class="material-icons" on:click={previousEpisode} disabled={!episode?.previousEpisodeId}>navigate_before</IconButton>
                 <IconButton class="material-icons" on:click={nextEpisode} disabled={!episode?.nextEpisodeId}>navigate_next</IconButton>
             </Section>

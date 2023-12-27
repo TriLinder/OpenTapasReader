@@ -1,8 +1,9 @@
 // Stores
 export type PageStateStore = {
-    currentPage: "loading" | "library" | "search" | "seriesDetail" | "episodeDetail";
+    currentPage: "loading" | "library" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
     seriesDetailPageSeries: Series | null;
     episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null;
+    episodeCommentsPageEpisode: { seriesId: number; episodeId: number } | null;
 }
 
 export type UrlToHashStore = {
