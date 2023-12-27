@@ -74,8 +74,8 @@
         <Textfield style="width: 80%" label="Search query" bind:value={query} on:input={debouncedFetchResults}/>
     </div>
 
-    {#if searchResults[query]}
-        {#each searchResults[query] as series (series.id)}
+    {#if searchResults[trimmedQuery]}
+        {#each searchResults[trimmedQuery] as series (series.id)}
             <SeriesCard {series}/>
         {:else}
             <div class="information">
