@@ -8,6 +8,8 @@
     import type { Series } from "$lib/types";
 
     export let series: Series;
+    export let storeThumbmnailOffline = false;
+
     $: creatorNames = series.creators.map(user => user.displayName).join(', ');
 
     function onClick() {
@@ -60,7 +62,7 @@
 <div class="series-card" use:Ripple={{ surface: true }} on:click={onClick} on:keypress tabindex="0" role="button">
     <div class="left-side">
         <div class="thumbnail">
-            <Image src={series.thumbnailUrl} storeOffline/>
+            <Image src={series.thumbnailUrl} storeOffline={storeThumbmnailOffline}/>
         </div>
 
         <div class="text">

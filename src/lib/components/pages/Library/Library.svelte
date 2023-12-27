@@ -46,7 +46,7 @@
 
 <div class="series">
     {#each Object.values($libraryStore.series) as series}
-        <SeriesCard {series}/>
+        <SeriesCard {series} storeThumbmnailOffline/>
     {/each}
 </div>
 
