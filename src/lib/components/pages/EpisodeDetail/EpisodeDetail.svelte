@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import { onMount, onDestroy } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
     import { goBack, commitToHistory } from "$lib/utils/page-history";
@@ -90,6 +92,7 @@
 
     h2 {
         text-align: center;
+        text-transform: capitalize;
     }
 </style>
 
@@ -125,15 +128,15 @@
         {/key}
 
         <div class="description">
-            <h2>Description:</h2>
+            <h2>{$_("episodeDetail.description")}</h2>
             <p>{episode.description}</p>
         </div>
 
         {#if episode.nextEpisodeId}
             <div class="continue-next-episode">
                 <Card padded variant="outlined">
-                    <p>Continue to the next episode!</p>
-                    <Button variant="raised" on:click={nextEpisode}>Next episode</Button>
+                    <p>{$_("episodeDetail.continueToNextEpisodeText")}</p>
+                    <Button variant="raised" on:click={nextEpisode}>{$_("episodeDetail.continueToNextEpisodeButton")}</Button>
                 </Card>
             </div>
         {/if}

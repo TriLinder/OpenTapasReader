@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import { libraryStore } from "../../../../stores";
     import type { Series } from "$lib/types";
 
@@ -36,6 +38,7 @@
         text-align: center;
         margin: 0;
         margin-top: 15px;
+        text-transform: capitalize;
     }
 
     .creators {
@@ -81,10 +84,10 @@
         <Image src={series.coverImageUrl} storeOffline={isSeriesInLibrary}/>
     </div>
 
-    <h2>Description</h2>
+    <h2>{$_("seriesDetail.description")}</h2>
     <p class="description">{series.description}</p>
 
-    <h2>Creators</h2>
+    <h2>{$_("seriesDetail.creators")}</h2>
     <div class="creators">
         {#each series.creators as creator}
             <div class="creator">
@@ -97,7 +100,7 @@
         {/each}
     </div>
 
-    <h2>Tags</h2>
+    <h2>{$_("seriesDetail.tags")}</h2>
     <div class="tags">
         {#each series.tags as tag}
             <code class="tag">#{tag}</code>

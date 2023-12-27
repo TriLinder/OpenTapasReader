@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import { goBack } from "$lib/utils/page-history";
     import { pageStateStore, libraryStore } from "../../../../stores";
     import { addSeriesToLibrary, removeSeriesFromLibrary } from "$lib/utils/library";
@@ -59,7 +61,7 @@
     <div class="content">
         <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
             <Tab {tab}>
-            <Label>{tab}</Label>
+            <Label>{$_(`seriesDetail.${tab}`)}</Label>
             </Tab>
         </TabBar>
 

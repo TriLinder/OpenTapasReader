@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import debounce from "lodash.debounce";
     import { getSearchResults } from "$lib/utils/api/search";
     import { goBack } from "$lib/utils/page-history";
@@ -63,7 +65,7 @@
         <Row>
             <Section>
                 <IconButton class="material-icons" on:click={goBack}>arrow_back</IconButton>
-                <Title>Search</Title>
+                <Title>{$_("search.title")}</Title>
             </Section>
         </Row>
     </TopAppBar>
@@ -71,7 +73,7 @@
 
 <div class="content">
     <div class="query-input">
-        <Textfield style="width: 80%" label="Search query" bind:value={query} on:input={debouncedFetchResults}/>
+        <Textfield style="width: 80%" label={$_("search.searchQuery")} bind:value={query} on:input={debouncedFetchResults}/>
     </div>
 
     {#if searchResults[trimmedQuery]}
@@ -79,7 +81,7 @@
             <SeriesCard {series}/>
         {:else}
             <div class="information">
-                <p>No search results found.</p>
+                <p>{$_("search.messages.noResults")}</p>
             </div>
         {/each}
     {:else}
@@ -89,7 +91,7 @@
             {/if}
 
             {#if trimmedQuery.length < 2}
-                <p>Please enter at least 2 characters.</p>
+                <p>{$_("search.messages.queryTooShort", {values: {minimumCharacterCount: 2}})}</p>
             {:else}
                 <CircularProgress style="height: 42px; width: 42px;" indeterminate />
             {/if}

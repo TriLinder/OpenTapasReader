@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import { libraryStore } from "../../../../stores";
     import type { Series, Episode } from "$lib/types";
 
@@ -28,7 +30,7 @@
 </style>
 
 <div class="controls">
-    <h2>{episodes.length} episodes</h2>
+    <h2>{$_("seriesDetail.episodeCount", {values: {count: episodes.length}})}</h2>
     <IconButton>
         <Icon class="material-icons" on:click={function() {reversed = !reversed;}}>swap_vert</Icon>
     </IconButton>

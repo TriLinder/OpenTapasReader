@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
+
     import { libraryStore } from "../../../../stores";
     import { commitToHistory } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
@@ -35,7 +37,7 @@
     <TopAppBar variant="standard">
         <Row>
             <Section>
-                <Title>Library</Title>
+                <Title>{$_("library.title")}</Title>
             </Section>
 
             <Section align="end">

@@ -1,1 +1,26 @@
-{}
+{
+    "library": {
+        "title": "Library"
+    },
+    "search": {
+        "title": "Search",
+        "searchQuery": "Search query",
+        "messages": {
+            "noResults": "No search results found.",
+            "queryTooShort": "Please enter at least {minimumCharacterCount} characters."
+        }
+    },
+    "seriesDetail": {
+        "episodes": "episodes",
+        "info": "info",
+        "description": "description",
+        "creators": "creators",
+        "tags": "tags",
+        "episodeCount": "{count} episodes"
+    },
+    "episodeDetail": {
+        "description": "description",
+        "continueToNextEpisodeText": "Continue to the next episode!",
+        "continueToNextEpisodeButton": "Next episode"
+    }
+}
