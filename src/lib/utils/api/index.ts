@@ -11,8 +11,8 @@ export async function getRequest(path: string, expectedResponseStatus = 200) {
             "x-device-type": "ANDROID",
             "x-device-uuid": ""
         },
-        connectTimeout: 3000,
-        readTimeout: 3000
+        connectTimeout: 10000,
+        readTimeout: 10000
     }
     
 
