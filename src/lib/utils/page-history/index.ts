@@ -13,7 +13,7 @@ export function goBack() {
     window.history.back();
 
     if (window.location.hash = "#") {
-        CapacitorApp.exitApp();
+        window.history.forward();
     }
 }
 
