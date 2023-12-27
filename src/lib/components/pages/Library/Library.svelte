@@ -3,6 +3,7 @@
     import { commitToHistory } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
 
+    import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import Fab, { Icon } from "@smui/fab";
     import SeriesCard from "$lib/components/ui/SeriesCard.svelte"; 
 
@@ -13,6 +14,16 @@
 </script>
 
 <style>
+    .app-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .series {
+        margin-top: 70px;
+    }
+
     .floating-search-button {
         position: fixed;
         right: 15px;
@@ -20,11 +31,24 @@
     }
 </style>
 
-Welcome to the library page!
+<div class="app-bar">
+    <TopAppBar variant="standard">
+        <Row>
+            <Section>
+                <Title>Library</Title>
+            </Section>
 
-{#each Object.values($libraryStore.series) as series}
-    <SeriesCard {series}/>
-{/each}
+            <Section align="end">
+            </Section>
+        </Row>
+    </TopAppBar>
+</div>
+
+<div class="series">
+    {#each Object.values($libraryStore.series) as series}
+        <SeriesCard {series}/>
+    {/each}
+</div>
 
 <div class="floating-search-button">
     <Fab color="primary" on:click={searchButtonClick}>
