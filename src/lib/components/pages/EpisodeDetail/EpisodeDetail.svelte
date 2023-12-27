@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
     import { goBack } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
@@ -31,11 +31,19 @@
         }
     }
 
+    const unsubsrcibe = pageStateStore.subscribe(function() {
+        if ($pageStateStore.currentPage == "episodeDetail") {
+            load();
+        }
+    });
+
     onMount(async function() {
         load();
     });
 
-    pageStateStore.subscribe(load);
+    onDestroy(function() {
+        unsubsrcibe();
+    });
 </script>
 
 <style>
