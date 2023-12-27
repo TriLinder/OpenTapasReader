@@ -35,5 +35,5 @@
 </div>
 
 {#each episodes as episode (episode.id)}
-    <EpisodeCard {episode} storeThubmnailOffline={isSeriesInLibrary}/>
+    <EpisodeCard {episode} storeThumbmnailOffline={isSeriesInLibrary}/>
 {/each}

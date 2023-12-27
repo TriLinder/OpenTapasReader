@@ -7,6 +7,7 @@
 
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
+    import EpisodeDownloadButton from "$lib/components/ui/EpisodeDownloadButton.svelte";
     import Card from '@smui/card';
     import Button from '@smui/button';
     import Image from "$lib/components/media/Image.svelte";
@@ -14,7 +15,7 @@
     let episode: Episode | null = null;
 
     async function load() {
-        episode = await loadEpisode($pageStateStore.episodeDetailPageEpsiode!.seriesId, $pageStateStore.episodeDetailPageEpsiode!.episodeId, true);
+        episode = await loadEpisode($pageStateStore.episodeDetailPageEpsiode!.seriesId, $pageStateStore.episodeDetailPageEpsiode!.episodeId);
     }
 
     function previousEpisode() {
@@ -98,8 +99,10 @@
             </Section>
 
             <Section align="end">
-                <IconButton class="material-icons">download</IconButton>
-                <IconButton class="material-icons" on:click={openComments}>comments</IconButton>
+                {#if episode}
+                    <EpisodeDownloadButton {episode}/>
+                    <IconButton class="material-icons" on:click={openComments} disabled={!episode}>comments</IconButton>
+                {/if}
                 <IconButton class="material-icons" on:click={previousEpisode} disabled={!episode?.previousEpisodeId}>navigate_before</IconButton>
                 <IconButton class="material-icons" on:click={nextEpisode} disabled={!episode?.nextEpisodeId}>navigate_next</IconButton>
             </Section>
@@ -111,7 +114,7 @@
     <div class="content">
         {#key (episode.id)}
             {#each episode.contentImageUrls as imgSrc}
-                <Image src={imgSrc} storeOffline/>
+                <Image src={imgSrc}/>
             {/each}
         {/key}
 

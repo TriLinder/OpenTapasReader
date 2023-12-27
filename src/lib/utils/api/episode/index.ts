@@ -1,4 +1,5 @@
 import { getRequest } from "..";
+import { loadMedia } from "$lib/utils/media";
 import { episodeStore } from "../../../../stores";
 import { get } from "svelte/store";
 import type { Episode } from "$lib/types";
@@ -51,6 +52,12 @@ export async function loadEpisode(seriesId: number, episodeId: number, storeOffl
         const episodeStoreValue = get(episodeStore);
         episodeStoreValue.episodes[episodeId] = episode;
         episodeStore.set(episodeStoreValue);
+
+        // And now the fun part! Save all the content images, by
+        // loading them for offline use.
+        for (const url of episode.contentImageUrls) {
+            await loadMedia(url, true);
+        }
     }
 
     // And finally, return the episode

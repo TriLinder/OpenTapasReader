@@ -1,6 +1,7 @@
 <script lang="ts">
     import Ripple from '@smui/ripple';
     import IconButton from "@smui/icon-button";
+    import EpisodeDownloadButton from './EpisodeDownloadButton.svelte';
     import Image from "../media/Image.svelte";
     import Lazy from "svelte-lazy";
 
@@ -9,7 +10,7 @@
     import type { Episode } from "$lib/types";
 
     export let episode: Episode;
-    export let storeThubmnailOffline = false;
+    export let storeThumbmnailOffline = false;
 
     function onClick() {
         $pageStateStore.currentPage = "episodeDetail";
@@ -20,8 +21,11 @@
 
 <style>
     .series-card {
-        display: flex;
         height: 75px;
+    }
+
+    .content {
+        display: flex;
         justify-content: space-between;
     }
 
@@ -58,22 +62,24 @@
     }
 </style>
 
-<div class="series-card" use:Ripple={{ surface: true }} on:click={onClick} on:keypress tabindex="0" role="button">
+<div class="series-card">
     <Lazy>
-        <div class="left-side">
-            <div class="thumbnail">
-                <Image src={episode.thumbnailUrl} storeOffline={storeThubmnailOffline}/>
+        <div class="content" use:Ripple={{ surface: true }} on:click={onClick} on:keypress tabindex="0" role="button">
+            <div class="left-side">
+                <div class="thumbnail">
+                    <Image src={episode.thumbnailUrl} storeOffline={storeThumbmnailOffline}/>
+                </div>
+
+                <div class="text">
+                    <h2>{episode.title}</h2>
+                    <span>date</span>
+                </div>
             </div>
 
-            <div class="text">
-                <h2>{episode.title}</h2>
-                <span>date</span>
-            </div>
-        </div>
-
-        <div class="right-side">
-            <div class="buttons">
-                <IconButton class="material-icons" size="normal">read_more</IconButton>
+            <div class="right-side">
+                <div class="buttons" on:click={function(event) {event.stopPropagation();}}>
+                    <EpisodeDownloadButton {episode}/>
+                </div>
             </div>
         </div>
     </Lazy>
