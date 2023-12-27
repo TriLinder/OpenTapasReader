@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
+    import { goBack } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
     import type { Episode } from "$lib/types";
 
@@ -73,7 +74,7 @@
     <TopAppBar variant="standard">
         <Row>
             <Section>
-                <IconButton class="material-icons">arrow_back</IconButton>
+                <IconButton class="material-icons" on:click={goBack}>arrow_back</IconButton>
 
                 {#if episode}
                     <Title>{episode?.title}</Title>

@@ -3,6 +3,7 @@
     import IconButton from "@smui/icon-button";
     import Image from "../media/Image.svelte";
 
+    import { commitToHistory } from '$lib/utils/page-history';
     import { pageStateStore } from '../../../stores';
     import type { Series } from "$lib/types";
 
@@ -12,6 +13,7 @@
     function onClick() {
         $pageStateStore.currentPage = "seriesDetail";
         $pageStateStore.seriesDetailPageSeries = series;
+        commitToHistory();
     }
 </script>
 

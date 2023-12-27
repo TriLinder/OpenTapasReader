@@ -4,6 +4,7 @@
     import Image from "../media/Image.svelte";
     import Lazy from "svelte-lazy";
 
+    import { commitToHistory } from '$lib/utils/page-history';
     import { pageStateStore } from '../../../stores';
     import type { Episode } from "$lib/types";
 
@@ -12,6 +13,7 @@
     function onClick() {
         $pageStateStore.currentPage = "episodeDetail";
         $pageStateStore.episodeDetailPageEpsiode = {seriesId: episode.seriesId, episodeId: episode.id};
+        commitToHistory();
     }
 </script>
 
