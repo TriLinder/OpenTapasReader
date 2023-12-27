@@ -10,6 +10,11 @@ export type UrlToHashStore = {
     urls: Record<string, string>;
 }
 
+export type LibraryStore = {
+    dataTypeVersion: number;
+    series: Series[];
+}
+
 export type EpisodeStore = {
     dataTypeVersion: number;
     episodes: Record<number, Episode>;
