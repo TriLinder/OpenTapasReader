@@ -1,38 +1,98 @@
 <script lang="ts">
     import debounce from "lodash.debounce";
     import { getSearchResults } from "$lib/utils/api/search";
+    import { goBack } from "$lib/utils/page-history";
     import type { Series } from "$lib/types";
 
+    import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
+    import IconButton from '@smui/icon-button';
+    import Textfield from '@smui/textfield';
+    import CircularProgress from '@smui/circular-progress';
     import SeriesCard from "$lib/components/ui/SeriesCard.svelte";
 
     let query = "";
     let searchResults: Record<string, Series[]> = {};
+    let errorString = "";
 
     $: trimmedQuery = query.trim();
 
     async function fetchResults() {
         if (trimmedQuery.length >= 2) {
-            console.log(`Searching for ${query}`);
+            console.log(`Searching for: ${query}`);
 
-            searchResults[trimmedQuery] = await getSearchResults(trimmedQuery);
+            try {
+                searchResults[trimmedQuery] = await getSearchResults(trimmedQuery);
+            } catch (error: any) {
+                errorString = error;
+                return;
+            }
         }
     }
 
-    const debouncedFetchResults = debounce(fetchResults, 300);
+    const debouncedFetchResults = debounce(fetchResults, 800);
 </script>
 
-<input type="text" bind:value={query} on:input={debouncedFetchResults}>
+<style>
+    .app-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 
-{#if searchResults[query]}
-    {#each searchResults[query] as series (series.id)}
-        <SeriesCard {series}/>
+    .content {
+        margin-top: 70px;
+    }
+
+    .query-input {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .information {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+
+<div class="app-bar">
+    <TopAppBar variant="standard">
+        <Row>
+            <Section>
+                <IconButton class="material-icons" on:click={goBack}>arrow_back</IconButton>
+                <Title>Search</Title>
+            </Section>
+        </Row>
+    </TopAppBar>
+</div>
+
+<div class="content">
+    <div class="query-input">
+        <Textfield style="width: 80%" label="Search query" bind:value={query} on:input={debouncedFetchResults}/>
+    </div>
+
+    {#if searchResults[query]}
+        {#each searchResults[query] as series (series.id)}
+            <SeriesCard {series}/>
+        {:else}
+            <div class="information">
+                <p>No search results found.</p>
+            </div>
+        {/each}
     {:else}
-        <p>No search results found.</p>
-    {/each}
-{:else}
-    {#if trimmedQuery.length < 2}
-        <p>Please enter at least 2 characters.</p>
-    {:else}
-        <p>Loading..</p>
+        <div class="information">
+            {#if errorString}
+                <p style="color: red;">{errorString}</p>
+            {/if}
+
+            {#if trimmedQuery.length < 2}
+                <p>Please enter at least 2 characters.</p>
+            {:else}
+                <CircularProgress style="height: 42px; width: 42px;" indeterminate />
+            {/if}
+        </div>
     {/if}
-{/if}
+</div>
