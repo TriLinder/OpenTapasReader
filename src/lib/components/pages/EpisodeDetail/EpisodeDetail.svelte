@@ -15,7 +15,13 @@
     let episode: Episode | null = null;
 
     async function load() {
-        episode = await loadEpisode($pageStateStore.episodeDetailPageEpsiode!.seriesId, $pageStateStore.episodeDetailPageEpsiode!.episodeId);
+        try {
+            episode = await loadEpisode($pageStateStore.episodeDetailPageEpsiode!.seriesId, $pageStateStore.episodeDetailPageEpsiode!.episodeId);
+        } catch(error: any) {
+            console.error(error);
+            alert(error);
+            return;
+        }
     }
 
     function previousEpisode() {
