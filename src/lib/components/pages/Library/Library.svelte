@@ -7,7 +7,12 @@
 
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import Fab, { Icon } from "@smui/fab";
+    import IconButton from '@smui/icon-button';
+    import PageDrawer from "$lib/components/ui/PageDrawer.svelte";
+
     import SeriesCard from "$lib/components/ui/SeriesCard.svelte"; 
+
+    let isDrawerOpen = false;
 
     function searchButtonClick() {
         $pageStateStore.currentPage = "search";
@@ -33,10 +38,13 @@
     }
 </style>
 
+<PageDrawer bind:isOpen={isDrawerOpen}/>
+
 <div class="app-bar">
     <TopAppBar variant="standard">
         <Row>
             <Section>
+                <IconButton class="material-icons" aria-label="Open drawer" on:click={function() {isDrawerOpen = true;}}>menu</IconButton>
                 <Title>{$_("library.title")}</Title>
             </Section>
 

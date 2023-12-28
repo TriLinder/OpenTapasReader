@@ -1,4 +1,8 @@
 {
+    "general": {
+        "appName": "OpenTapasReader",
+        "appMotto": "[[Something catchy]]"
+    },
     "library": {
         "title": "Library"
     },
