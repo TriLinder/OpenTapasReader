@@ -1,5 +1,5 @@
 import { getRequest } from "..";
-import { loadMedia } from "$lib/utils/media";
+import { loadMedia, deleteMediaFromStroage } from "$lib/utils/media";
 import { episodeStore } from "../../../../stores";
 import { get } from "svelte/store";
 import type { Episode } from "$lib/types";
@@ -62,4 +62,22 @@ export async function loadEpisode(seriesId: number, episodeId: number, storeOffl
 
     // And finally, return the episode
     return episode;
+}
+
+export async function deleteEpisodeFromStorage(episodeId: number) {
+    // First, let's check if the episode is even stored offline
+    if (episodeId in get(episodeStore).episodes) {
+        const episode = get(episodeStore).episodes[episodeId];
+
+        // Alright, let's delete the episode's content images
+        // one by one.
+        for (const url of episode.contentImageUrls) {
+            await deleteMediaFromStroage(url);
+        }
+
+        // And now, let's remove it from the episode store.
+        const episodeStoreValue = get(episodeStore);
+        delete episodeStoreValue.episodes[episodeId];
+        episodeStore.set(episodeStoreValue);
+    }
 }

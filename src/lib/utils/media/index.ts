@@ -36,6 +36,7 @@ async function saveMediaToStorage(hash: string, dataUrl: string) {
     });
 }
 
+
 // Loads a media file (for example an image) from a URL and returns its data url
 export async function loadMedia(url: string, storeOffline=false): Promise<string> {
     // First, let's check if the media is already stored offline
@@ -76,4 +77,26 @@ export async function loadMedia(url: string, storeOffline=false): Promise<string
     }
 
     return base64DataUrl;
+}
+
+export async function deleteMediaFromStroage(url: string) {
+    // Let's check if we even have a hash stored for this URL
+    if (url in get(urlToHashStore).urls) {
+        const mediaHash = get(urlToHashStore).urls[url];
+
+        // Cool, we do! Now let's try to delete the media file
+        try {
+            await Filesystem.deleteFile({
+                directory: Directory.Data,
+                path: `/media/${mediaHash}`
+            });
+        } catch {
+            // Fail silently
+        }
+
+        // And now finally, remove the media's URL from the urlToHash store
+        const urlToHashStoreValue = get(urlToHashStore);
+        delete urlToHashStoreValue.urls[url];
+        urlToHashStore.set(urlToHashStoreValue);
+    }
 }
