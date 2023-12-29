@@ -1,5 +1,6 @@
 // Stores
 export type PageStateStore = {
+    dataTypeVersion: number;
     currentPage: "library" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
     seriesDetailPage: {
         series: Series | null;

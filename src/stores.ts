@@ -33,6 +33,7 @@ export const episodeStore = objectStore<EpisodeStore>({
 export const pageStateStore = objectStore<PageStateStore>({
     storeName: "tapasClientPageStateStore",
     initialValue: {
+        dataTypeVersion: 0,
         currentPage: "library",
         seriesDetailPage: {
             series: null,
