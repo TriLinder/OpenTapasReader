@@ -30,13 +30,19 @@ export const episodeStore = objectStore<EpisodeStore>({
     persist: true
 });
 
-export const pageStateStore = writable<PageStateStore>({
-    currentPage: "loading",
-    seriesDetailPage: {
-        series: null,
-        reversed: false,
-        episodeListVerticalScrollPosition: 0
+export const pageStateStore = objectStore<PageStateStore>({
+    storeName: "tapasClientPageStateStore",
+    initialValue: {
+        currentPage: "library",
+        seriesDetailPage: {
+            series: null,
+            reversed: false,
+            episodeListVerticalScrollPosition: 0
+        },
+        episodeDetailPageEpsiode: null,
+        episodeCommentsPageEpisode: null
     },
-    episodeDetailPageEpsiode: null,
-    episodeCommentsPageEpisode: null
+    persist: true
 });
+
+export const isAppLoadingStore = writable<boolean>(true);

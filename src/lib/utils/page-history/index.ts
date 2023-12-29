@@ -27,13 +27,6 @@ if (browser) {
 
         if (hash != encodeURIComponent(JSON.stringify(get(pageStateStore)))) {
             pageStateStore.set(JSON.parse(decodeURIComponent(hash)));
-
-            // Quit the appliaction if the user navigates back to these pages
-            if (get(pageStateStore).currentPage == "loading") {
-                CapacitorApp.exitApp();
-                console.log("Quitting!");
-                return;
-            }
         }
     });
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { pageStateStore } from "../stores";
+    import { isAppLoadingStore, pageStateStore } from "../stores";
 
     import Loading from "$lib/components/pages/Loading/Loading.svelte";
     import Library from "$lib/components/pages/Library/Library.svelte";
@@ -21,7 +21,7 @@
     <p>Please enable JavaScript and reload the page.</p>
 </noscript>
 
-{#if $pageStateStore.currentPage == "loading"}
+{#if $isAppLoadingStore}
     <Loading/>
 {:else if $pageStateStore.currentPage == "library"}
     <Library/>
