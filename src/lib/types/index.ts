@@ -1,7 +1,11 @@
 // Stores
 export type PageStateStore = {
     currentPage: "loading" | "library" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
-    seriesDetailPageSeries: Series | null;
+    seriesDetailPage: {
+        series: Series | null;
+        reversed: boolean;
+        episodeListVerticalScrollPosition: number;
+    };
     episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null;
     episodeCommentsPageEpisode: { seriesId: number; episodeId: number } | null;
 }

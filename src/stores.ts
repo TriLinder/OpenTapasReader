@@ -32,6 +32,11 @@ export const episodeStore = objectStore<EpisodeStore>({
 
 export const pageStateStore = writable<PageStateStore>({
     currentPage: "loading",
-    seriesDetailPageSeries: null,
-    episodeDetailPageEpsiode: null
+    seriesDetailPage: {
+        series: null,
+        reversed: false,
+        episodeListVerticalScrollPosition: 0
+    },
+    episodeDetailPageEpsiode: null,
+    episodeCommentsPageEpisode: null
 });

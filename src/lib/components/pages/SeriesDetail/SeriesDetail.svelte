@@ -1,6 +1,7 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
+    import debounce from "lodash.debounce";
     import { goBack } from "$lib/utils/page-history";
     import { pageStateStore, libraryStore } from "../../../../stores";
     import { addSeriesToLibrary, removeSeriesFromLibrary } from "$lib/utils/library";
@@ -15,15 +16,18 @@
 
     let activeTab = "episodes";
     
-    $: series = $pageStateStore.seriesDetailPageSeries!;
+    $: series = $pageStateStore.seriesDetailPage.series!;
     $: isSeriesInLibrary = series.id in $libraryStore.series;
+
+    function onEpisodeListScroll(event: Event) {
+        const position = (event.target as HTMLElement).scrollTop;
+        $pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition = position;
+    }
+
+    const debouncedOnEpisodeListScroll = debounce(onEpisodeListScroll, 700);
 </script>
 
 <style>
-    h1 {
-        text-align: center;
-    }
-
     .app-bar {
         position: absolute;
         left: 0;
@@ -31,7 +35,18 @@
     }
 
     .content {
-        margin-top: 70px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tab-bar {
+        margin-top: 60px;
     }
 </style>
 
@@ -59,14 +74,16 @@
 
 {#key isSeriesInLibrary}
     <div class="content">
-        <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
-            <Tab {tab}>
-            <Label>{$_(`seriesDetail.${tab}`)}</Label>
-            </Tab>
-        </TabBar>
+        <div class="tab-bar">
+            <TabBar tabs={["episodes", "info"]} let:tab bind:active={activeTab}>
+                <Tab {tab}>
+                <Label>{$_(`seriesDetail.${tab}`)}</Label>
+                </Tab>
+            </TabBar>
+        </div>
 
         {#if activeTab == "episodes"}
-            <Episodes {series}/>
+            <Episodes {series} on:scroll={debouncedOnEpisodeListScroll}/>
         {:else if activeTab == "info"}
             <Info {series}/>
         {/if}

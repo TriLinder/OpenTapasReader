@@ -14,7 +14,7 @@
 
     function onClick() {
         $pageStateStore.currentPage = "seriesDetail";
-        $pageStateStore.seriesDetailPageSeries = series;
+        $pageStateStore.seriesDetailPage.series = series;
         commitToHistory();
     }
 </script>

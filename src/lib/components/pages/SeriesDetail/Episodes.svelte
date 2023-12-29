@@ -27,6 +27,12 @@
         justify-content: space-between;
         align-items: center;
     }
+
+    .episodes {
+        overflow-y: scroll;
+        flex-grow: 1;
+        margin: 0;
+    }
 </style>
 
 <div class="controls">
@@ -36,6 +42,8 @@
     </IconButton>
 </div>
 
-{#each episodes as episode (episode.id)}
-    <EpisodeCard {episode} storeThumbmnailOffline={isSeriesInLibrary}/>
-{/each}
+<div class="episodes" on:scroll>
+    {#each episodes as episode (episode.id)}
+        <EpisodeCard {episode} storeThumbmnailOffline={isSeriesInLibrary}/>
+    {/each}
+</div>
