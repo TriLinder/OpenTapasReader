@@ -14,6 +14,12 @@ export function commitToHistory() {
     pageStateHistoryStore.set(historyStoreValue);
 }
 
+export function updateCurrentState() {
+    const historyStoreValue = get(pageStateHistoryStore);
+    historyStoreValue.history[historyStoreValue.currentIndex] = JSON.stringify(get(pageStateStore));
+    pageStateHistoryStore.set(historyStoreValue);
+}
+
 export function goBack() {
     const historyStoreValue = get(pageStateHistoryStore);
 

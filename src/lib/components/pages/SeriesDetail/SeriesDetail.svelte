@@ -2,7 +2,7 @@
     import { _ } from "svelte-i18n";
 
     import debounce from "lodash.debounce";
-    import { goBack } from "$lib/utils/page-history";
+    import { goBack, updateCurrentState } from "$lib/utils/page-history";
     import { pageStateStore, libraryStore } from "../../../../stores";
     import { addSeriesToLibrary, removeSeriesFromLibrary } from "$lib/utils/library";
 
@@ -22,9 +22,11 @@
     function onEpisodeListScroll(event: Event) {
         const position = (event.target as HTMLElement).scrollTop;
         $pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition = position;
+
+        updateCurrentState();
     }
 
-    const debouncedOnEpisodeListScroll = debounce(onEpisodeListScroll, 700);
+    const debouncedOnEpisodeListScroll = debounce(onEpisodeListScroll, 500);
 </script>
 
 <style>
