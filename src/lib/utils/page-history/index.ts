@@ -1,34 +1,36 @@
 import { App as CapacitorApp } from "@capacitor/app";
-import { pageStateStore } from "../../../stores";
+import { pageStateStore, pageStateHistoryStore } from "../../../stores";
 import { get } from "svelte/store";
 import { browser } from "$app/environment";
 
 export function commitToHistory() {
-    if (browser) {
-        document.location.hash = encodeURIComponent(JSON.stringify(get(pageStateStore)));
-    }
+    const historyStoreValue = get(pageStateHistoryStore);
+    
+    historyStoreValue.currentIndex += 1;
+
+    historyStoreValue.history[historyStoreValue.currentIndex] = JSON.stringify(get(pageStateStore));
+    historyStoreValue.history.splice(historyStoreValue.currentIndex + 1);
+
+    pageStateHistoryStore.set(historyStoreValue);
 }
 
 export function goBack() {
-    window.history.back();
+    const historyStoreValue = get(pageStateHistoryStore);
 
-    if (window.location.hash = "#") {
-        window.history.forward();
+    if (historyStoreValue.currentIndex > 0) {
+        historyStoreValue.currentIndex -= 1;
+        pageStateHistoryStore.set(historyStoreValue);
+    
+        const previousPageState = historyStoreValue.history[historyStoreValue.currentIndex];
+    
+        if (previousPageState) {
+            pageStateStore.set(JSON.parse(previousPageState));
+        }
+    } else {
+        console.warn("No page to return back to in history.");
     }
 }
 
-export function goForward() {
-    window.history.forward();
-}
-
 if (browser) {
-    window.addEventListener("hashchange", function() {
-        const hash = window.location.hash.slice(1);
-
-        if (hash != encodeURIComponent(JSON.stringify(get(pageStateStore)))) {
-            pageStateStore.set(JSON.parse(decodeURIComponent(hash)));
-        }
-    });
-
     CapacitorApp.addListener("backButton", goBack);
 }

@@ -10,6 +10,12 @@ export type PageStateStore = {
     episodeCommentsPageEpisode: { seriesId: number; episodeId: number } | null;
 }
 
+export type PageStateHistoryStore = {
+    dataTypeVersion: number;
+    currentIndex: number;
+    history: string[]
+}
+
 export type UrlToHashStore = {
     dataTypeVersion: number;
     urls: Record<string, string>;
