@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { commitToHistory } from "$lib/utils/page-history";
     import { isAppLoadingStore } from "../../../../stores";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
@@ -9,7 +8,6 @@
     function loaded() {
         // Loaded!
         $isAppLoadingStore = false;
-        commitToHistory();
     }
 
     onMount(async function() {

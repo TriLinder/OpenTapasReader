@@ -39,4 +39,11 @@ export function goBack() {
 
 if (browser) {
     CapacitorApp.addListener("backButton", goBack);
+
+    // Make sure there's at least one page committed to history
+    pageStateHistoryStore.subscribe(function(newValue) {
+        if (newValue.history.length == 0) {
+            commitToHistory();
+        }
+    });
 }
