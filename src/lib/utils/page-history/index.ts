@@ -33,7 +33,11 @@ export function goBack() {
             pageStateStore.set(JSON.parse(previousPageState));
         }
     } else {
-        console.warn("No page to return back to in history.");
+        console.warn("No page to return back to in history. (defaulting back to library page)");
+        // Return to the library page
+        const pageStateStoreValue = get(pageStateStore);
+        pageStateStoreValue.currentPage = "library";
+        pageStateStore.set(pageStateStoreValue);
     }
 }
 
