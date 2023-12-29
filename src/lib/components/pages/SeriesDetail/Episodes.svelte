@@ -1,6 +1,7 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
+    import { onMount } from "svelte";
     import { libraryStore } from "../../../../stores";
     import type { Series, Episode } from "$lib/types";
 
@@ -8,8 +9,10 @@
     import EpisodeCard from "$lib/components/ui/EpisodeCard.svelte";
 
     export let series: Series;
-
-    let reversed = true;
+    export let reversed = true;
+    export let beginningVerticalScrollPosition = 0;
+    
+    let episodesDivElement: HTMLDivElement;
     let episodes: Episode[] = [];
 
     $: if (!reversed) {
@@ -19,6 +22,10 @@
     }
 
     $: isSeriesInLibrary = series.id in $libraryStore.series;
+
+    onMount(function() {
+        episodesDivElement.scrollTo({top: beginningVerticalScrollPosition});
+    });
 </script>
 
 <style>
@@ -42,7 +49,7 @@
     </IconButton>
 </div>
 
-<div class="episodes" on:scroll>
+<div class="episodes" bind:this={episodesDivElement} on:scroll>
     {#each episodes as episode (episode.id)}
         <EpisodeCard {episode} storeThumbmnailOffline={isSeriesInLibrary}/>
     {/each}

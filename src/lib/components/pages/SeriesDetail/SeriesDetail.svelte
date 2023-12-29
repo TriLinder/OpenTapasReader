@@ -83,7 +83,7 @@
         </div>
 
         {#if activeTab == "episodes"}
-            <Episodes {series} on:scroll={debouncedOnEpisodeListScroll}/>
+            <Episodes {series} beginningVerticalScrollPosition={$pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition} on:scroll={debouncedOnEpisodeListScroll} bind:reversed={$pageStateStore.seriesDetailPage.reversed}/>
         {:else if activeTab == "info"}
             <Info {series}/>
         {/if}
