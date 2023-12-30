@@ -1,7 +1,9 @@
 <script lang="ts">
-    import { _, date } from "svelte-i18n";
+    import { _, date, number } from "svelte-i18n";
     import type { Comment } from "$lib/types";
+    
     import Ripple from '@smui/ripple';
+    import Comments from "./Comments.svelte";
 
     export let comment: Comment;
     let repliesShown = false;
@@ -13,7 +15,6 @@
         border-width: 1px;
         border-color: rgb(220, 220, 220);
         padding: 10px;
-        margin: 10px;
         border-radius: 8px;
         display: flex;
         flex-direction: column;
@@ -52,29 +53,43 @@
         font-size: 0.8rem;
         text-align: right;
     }
+
+    .replies {
+        padding-left: 15px;
+    }
 </style>
   
-<div class="comment">
-    <div class="info">
-        <img class="profile-picture" src={comment.creator.profilePictureUrl} alt="Profile" />
-        
-        <div>
-            <span class="username">{comment.creator.displayName}</span> <br>
-            <span class="creation-date">{$date(new Date(comment.creationDate), {format: "long"})}</span>
+<div class="content">
+    <div class="comment">
+        <div class="info">
+            <img class="profile-picture" src={comment.creator.profilePictureUrl} alt={`${comment.creator.displayName}'s profile picture`} />
+            
+            <div>
+                <span class="username">{comment.creator.displayName}</span> <br>
+                <span class="creation-date">{$date(new Date(comment.creationDate), {format: "long"})}</span>
+            </div>
         </div>
-    </div>
-    
-    <p class="comment-content">{comment.body}</p>
-
-    <div class="reactions">
-        <span>{$_("comment.likeCount", {values: {likeCount: comment.likeCount}})}</span>
         
-        <div class="show-replies" on:click={function() {repliesShown = !repliesShown;}} on:keypress use:Ripple={{ surface: true }} tabindex="0" role="button">
-            {#if !repliesShown}
-                <span>{$_("comment.showReplies", {values: {replyCount: comment.replyCount}})}</span>
-            {:else}
-                <span>{$_("comment.hideReplies", {values: {replyCount: comment.replyCount}})}</span>
+        <p class="comment-content">{comment.body}</p>
+
+        <div class="reactions">
+            <span>{$_("comment.likeCount", {values: {likeCount: $number(comment.likeCount, {notation: "compact"})}})}</span>
+            
+            {#if comment.replyCount}
+                <div class="show-replies" on:click={function() {repliesShown = !repliesShown;}} on:keypress use:Ripple={{ surface: true }} tabindex="0" role="button">
+                    {#if !repliesShown}
+                        <span>{$_("comment.showReplies", {values: {replyCount: $number(comment.replyCount, {notation: "compact"})}})}</span>
+                    {:else}
+                        <span>{$_("comment.hideReplies", {values: {replyCount: $number(comment.replyCount, {notation: "compact"})}})}</span>
+                    {/if}
+                </div>
             {/if}
         </div>
     </div>
+
+    {#if repliesShown}
+        <div class="replies">
+            <Comments episodeId={comment.episodeId} parentCommentId={comment.id}/>
+        </div>
+    {/if}
 </div>

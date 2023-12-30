@@ -10,14 +10,17 @@ function parseCommentsHtml(html: string) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
 
-    const commentElements = doc.querySelectorAll(".comment-row-wrap.js-comment-parent-row");
+    const commentElements = Array.from(
+            doc.querySelectorAll(".comment-row-wrap.js-comment-parent-row")).concat(
+            Array.from(doc.querySelectorAll(".reply-wrapper.js-comment-reply"))
+        );
     const comments: Comment[] = [];
 
     for (const commentElement of commentElements) {
         const id = parseInt(commentElement.querySelector(".body__row")?.id.split("-").pop()!); // The whole element id looks like this: "comment-box-<COMMENT-ID>"
         const episodeId = parseInt(commentElement.querySelector(".info__button--reply")?.getAttribute("data-permalink")?.split("/")[2].split("?")[0]!); // The data-permalink attribute looks like this: "/episode/<EPISODE-ID>?_=_#comment-section"
         const creationDate = new Date(commentElement.querySelector(".writer__date")!.textContent!).toString();
-        const likeCount = parseInt(commentElement.querySelector("a.info__button.js-have-to-sign")?.getAttribute("data-cnt")!);
+        const likeCount = parseInt(commentElement.querySelector("a.info__button")?.getAttribute("data-cnt")!);
         const replyCount = parseInt(commentElement.querySelector(".js-toggle-reply-btn")?.getAttribute("data-reply-cnt")!);
         const body = commentElement.querySelector(".body__comment")!.textContent;
         
@@ -51,5 +54,20 @@ export async function getEpisodeComments(episodeId: number, page: number, sort: 
     const html: string = response.data.html;
     
     const comments = parseCommentsHtml(html);
-    return comments;
+    return {
+        comments: comments,
+        hasNextPage: response.data.pagination.has_next
+    };
+}
+
+export async function getCommentReplies(episodeId: number, parentCommentId: number, page: number) {
+    const response = await getRequest(`/comment/${episodeId}/${parentCommentId}/replies?page=${page}`, "https://tapas.io");
+
+    const html: string = response.data.html;
+
+    const comments = parseCommentsHtml(html);
+    return {
+        comments: comments,
+        hasNextPage: response.data.pagination.has_next
+    };
 }

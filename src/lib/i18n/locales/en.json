@@ -28,8 +28,15 @@
         "continueToNextEpisodeButton": "Next episode"
     },
     "episodeComments": {
-        "title": "Comments",
-        "loadNextPage": "Load More Comments"
+        "title": "Comments"
+    },
+    "comments": {
+        "loadNextPage": "Load More Comments",
+        "sortTypes": {
+            "best": "Best",
+            "newest": "Newest",
+            "oldest": "Oldest"
+        }
     },
     "comment": {
         "likeCount": "{likeCount} likes",

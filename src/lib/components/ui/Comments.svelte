@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n';
 
-    import { getEpisodeComments } from '$lib/utils/api/comments';
+    import { getEpisodeComments, getCommentReplies } from '$lib/utils/api/comments';
     import { onMount } from 'svelte';
     import type { Comment } from '$lib/types';
 
@@ -14,7 +14,7 @@
     let comments: Comment[] = [];
     let sort: "best" | "newest" | "oldest" = "best";
     let page = 1;
-    let onLastPage = false;
+    let hasNextPage = false;
     let loading = false;
 
     export let episodeId: number;
@@ -30,16 +30,21 @@
         loading = true;
         
         try {
-            const newComments = await getEpisodeComments(episodeId, page, sort);
-            comments = comments.concat(newComments);
-            
-            if (newComments.length == 0) {
-                onLastPage = true;
-            }
+            // Either show comments on an episode, or replies to another comments
+            const response = parentCommentId
+                ? await getCommentReplies(episodeId, parentCommentId, page)
+                : await getEpisodeComments(episodeId, page, sort);
 
+            hasNextPage = response.hasNextPage;
+
+            // Concatenate new comments to the existing ones
+            comments = [...comments, ...response.comments];
+
+            // Increment the page number
             page += 1;
             loading = false;
         } catch(error: any) {
+            // Handle errors
             console.error(error);
             alert(error);
             loading = false;
@@ -55,7 +60,7 @@
 
         comments = [];
         page = 1;
-        onLastPage = false;
+        hasNextPage = false;
 
         // Load the first page
         loadNextPage();
@@ -83,18 +88,26 @@
         pointer-events: none;
         filter: opacity(0.5);
     }
+
+    .comments {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 </style>
 
-{#if showSortingSelection}
+<!-- Sorting selection UI -->
+{#if showSortingSelection && (!parentCommentId)}
     <div class="sorting-selection" class:disabled={loading}>
         <Set chips={["best", "newest", "oldest"]} choice on:click={onSortTypeChange} let:chip bind:selected={sort}>
             <Chip {chip}>
-                <Text>{chip}</Text>
+                <Text>{$_(`comments.sortTypes.${chip}`)}</Text>
             </Chip>
         </Set>
     </div>
 {/if}
 
+<!-- Comments -->
 <div class="comments">
     {#each comments as comment}
         <CommentComponent {comment}/>
@@ -107,10 +120,11 @@
     {/if}
 </div>
 
-{#if !onLastPage}
+<!-- Load next page button -->
+{#if hasNextPage}
     <div class="load-next-page">
         <Card padded variant="outlined">
-            <Button variant="raised" on:click={loadNextPage} bind:disabled={loading}>{$_("episodeComments.loadNextPage")}</Button>
+            <Button variant="raised" on:click={loadNextPage} bind:disabled={loading}>{$_("comments.loadNextPage")}</Button>
         </Card>
     </div>
 {/if}

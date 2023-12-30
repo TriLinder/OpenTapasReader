@@ -75,6 +75,6 @@ export type Comment = {
     creator: TapasUser;
     creationDate: string;
     likeCount: number;
-    replyCount: number;
+    replyCount: number | null;
     body: string;
 }
