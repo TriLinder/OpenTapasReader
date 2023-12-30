@@ -35,7 +35,7 @@ export type EpisodeStore = {
 
 // Tapas
 export type TapasUser = {
-    id: number;
+    id: number | null;
     username: string;
     displayName: string;
     profilePictureUrl: string;
@@ -67,4 +67,14 @@ export type Episode = {
     contentImageUrls: string[];
     previousEpisodeId: number | null;
     nextEpisodeId: number | null;
+}
+
+export type Comment = {
+    id: number;
+    episodeId: number;
+    creator: TapasUser;
+    creationDate: string;
+    likeCount: number;
+    replyCount: number;
+    body: string;
 }

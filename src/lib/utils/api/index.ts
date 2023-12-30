@@ -3,9 +3,9 @@ import type { HttpOptions } from '@capacitor/core';
 
 export const API_BASE_URL = "https://api.tapas.io/v3"
 
-export async function getRequest(path: string, expectedResponseStatus = 200) {
+export async function getRequest(path: string, baseUrl=API_BASE_URL, expectedResponseStatus = 200) {
     const options: HttpOptions = {
-        url: API_BASE_URL + path,
+        url: baseUrl + path,
         headers: {
             "accept": "application/panda+json",
             "x-device-type": "ANDROID",

@@ -26,5 +26,8 @@
         "description": "description",
         "continueToNextEpisodeText": "Continue to the next episode!",
         "continueToNextEpisodeButton": "Next episode"
+    },
+    "episodeComments": {
+        "title": "Comments"
     }
 }
