@@ -8,6 +8,9 @@
         "lastUpdated": "Last refreshed: {date} {time}",
         "updateReminder": "Make sure to refresh your library periodically to see new episodes!"
     },
+    "about": {
+        "title": "About"
+    },
     "search": {
         "title": "Search",
         "searchQuery": "Search query",

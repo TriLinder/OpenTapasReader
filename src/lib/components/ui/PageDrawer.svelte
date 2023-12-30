@@ -25,6 +25,11 @@
             pageSlug: "library",
             icon: "view_agenda",
             label: $_("library.title")
+        },
+        {
+            pageSlug: "about",
+            icon: "info",
+            label: $_("about.title")
         }
     ]
 </script>
