@@ -34,7 +34,7 @@
         position: absolute;
         top: 0;
 
-        z-index: 5;
+        z-index: 6;
     }
 
     .scrim {
@@ -48,7 +48,7 @@
         z-index: 500;
         background-color: rgb(0, 0, 0, 0.25);
 
-        z-index: 2;
+        z-index: 5;
     }
 </style>
 
