@@ -1,6 +1,14 @@
 <script lang="ts">
     import { isAppLoadingStore, pageStateStore } from "../stores";
 
+    import "@fontsource/roboto/100.css";
+    import "@fontsource/roboto/300.css";
+    import "@fontsource/roboto/400.css";
+    import "@fontsource/roboto/500.css";
+    import "@fontsource/roboto/700.css";
+    import "@fontsource/roboto/900.css";
+    import "material-icons/iconfont/material-icons.css";
+
     import Loading from "$lib/components/pages/Loading/Loading.svelte";
     import Library from "$lib/components/pages/Library/Library.svelte";
     import Search from "$lib/components/pages/Search/Search.svelte";

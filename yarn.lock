@@ -175,6 +175,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.10.tgz#bd123a74f243d2f3a1f046447bb9b363ee25d072"
   integrity sha512-whqLG6Sc70AbU73fFYvuYzaE4MNMBIlR1Y/IrUeOXFrWHxBEjjbZaQ3IXIQS8wJdAzue2GwYZCjOrgrU1oUHoA==
 
+"@fontsource/roboto@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.0.8.tgz#613b477a56f21b5705db1a67e995c033ef317f76"
+  integrity sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==
+
 "@formatjs/ecma402-abstract@1.18.0":
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.18.0.tgz#e2120e7101020140661b58430a7ff4262705a2f2"
@@ -1842,6 +1847,11 @@ magic-string@^0.30.4, magic-string@^0.30.5:
   integrity sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
+
+material-icons@^1.13.12:
+  version "1.13.12"
+  resolved "https://registry.yarnpkg.com/material-icons/-/material-icons-1.13.12.tgz#eed4082bf0426642edeb027e75397e3064adc536"
+  integrity sha512-/2YoaB79IjUK2B2JB+vIXXYGtBfHb/XG66LvoKVM5ykHW7yfrV5SP6d7KLX6iijY6/G9GqwgtPQ/sbhFnOURVA==
 
 mdn-data@2.0.30:
   version "2.0.30"
