@@ -3,7 +3,7 @@
 
     import { onMount, onDestroy } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
-    import { goBack, commitToHistory } from "$lib/utils/page-history";
+    import { goBack, commitToHistory, updateCurrentState } from "$lib/utils/page-history";
     import { pageStateStore } from "../../../../stores";
     import type { Episode } from "$lib/types";
 
@@ -31,6 +31,8 @@
         if (episode?.previousEpisodeId) {
             $pageStateStore.episodeDetailPageEpsiode!.episodeId = episode.previousEpisodeId;
             episode = null;
+            
+            updateCurrentState();
         }
     }
 
@@ -38,6 +40,8 @@
         if (episode?.nextEpisodeId) {
             $pageStateStore.episodeDetailPageEpsiode!.episodeId = episode.nextEpisodeId;
             episode = null;
+
+            updateCurrentState();
         }
     }
 
