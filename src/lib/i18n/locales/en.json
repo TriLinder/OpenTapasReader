@@ -30,7 +30,9 @@
     "episodeDetail": {
         "description": "description",
         "continueToNextEpisodeText": "Continue to the next episode!",
-        "continueToNextEpisodeButton": "Next episode"
+        "continueToNextEpisodeButton": "Next episode",
+        "notAvailableYet": "This episode isn't available yet. Please come back at a later date.",
+        "releaseDate": "<b>Relase date:</b> {date} {time}"
     },
     "episodeComments": {
         "title": "Comments"

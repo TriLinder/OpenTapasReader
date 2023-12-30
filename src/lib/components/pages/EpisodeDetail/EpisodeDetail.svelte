@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
+    import { _, date, time } from "svelte-i18n";
 
     import { onMount, onDestroy } from "svelte";
     import { loadEpisode } from "$lib/utils/api/episode";
@@ -15,6 +15,7 @@
     import Image from "$lib/components/media/Image.svelte";
 
     let episode: Episode | null = null;
+    $: isEpisodeAvailable = episode && (!episode.scheduledDate || new Date().getTime() > new Date(episode.scheduledDate).getTime())
 
     async function load() {
         try {
@@ -94,6 +95,11 @@
         text-align: center;
         text-transform: capitalize;
     }
+
+    .episode-not-available {
+        margin-top: 40px;
+        text-align: center;
+    }
 </style>
 
 <div class="app-bar">
@@ -108,9 +114,9 @@
             </Section>
 
             <Section align="end">
-                {#if episode}
+                {#if episode && isEpisodeAvailable}
                     <EpisodeDownloadButton {episode}/>
-                    <IconButton class="material-icons" on:click={openComments} disabled={!episode}>comments</IconButton>
+                    <IconButton class="material-icons" on:click={openComments}>comments</IconButton>
                 {/if}
                 <IconButton class="material-icons" on:click={previousEpisode} disabled={!episode?.previousEpisodeId}>navigate_before</IconButton>
                 <IconButton class="material-icons" on:click={nextEpisode} disabled={!episode?.nextEpisodeId}>navigate_next</IconButton>
@@ -121,22 +127,39 @@
 
 {#if episode}
     <div class="content">
-        {#key (episode.id)}
-            {#each episode.contentImageUrls as imgSrc}
-                <Image src={imgSrc}/>
-            {/each}
-        {/key}
+        {#if isEpisodeAvailable}
+            <!-- Episode's images -->
+            {#key (episode.id)}
+                {#each episode.contentImageUrls as imgSrc}
+                    <Image src={imgSrc}/>
+                {/each}
+            {/key}
 
-        <div class="description">
-            <h2>{$_("episodeDetail.description")}</h2>
-            <p>{episode.description}</p>
-        </div>
+            <!-- The description -->
+            <div class="description">
+                <h2>{$_("episodeDetail.description")}</h2>
+                <p>{episode.description}</p>
+            </div>
 
-        {#if episode.nextEpisodeId}
-            <div class="continue-next-episode">
+            <!-- Show a button to continue to the next episode (if it exists) -->
+            {#if episode.nextEpisodeId}
+                <div class="continue-next-episode">
+                    <Card padded variant="outlined">
+                        <p>{$_("episodeDetail.continueToNextEpisodeText")}</p>
+                        <Button variant="raised" on:click={nextEpisode}>{$_("episodeDetail.continueToNextEpisodeButton")}</Button>
+                    </Card>
+                </div>
+            {/if}
+
+        {:else}
+            <!-- Episode not available yet -->
+            <div class="episode-not-available">
                 <Card padded variant="outlined">
-                    <p>{$_("episodeDetail.continueToNextEpisodeText")}</p>
-                    <Button variant="raised" on:click={nextEpisode}>{$_("episodeDetail.continueToNextEpisodeButton")}</Button>
+                    <p>{$_("episodeDetail.notAvailableYet")}</p>
+
+                    {#if episode.scheduledDate}
+                        <span>{@html $_("episodeDetail.releaseDate", {values: {date: $date(new Date(episode.scheduledDate), {format: "long"}), time: $time(new Date(episode.scheduledDate))}})}</span>
+                    {/if}
                 </Card>
             </div>
         {/if}
