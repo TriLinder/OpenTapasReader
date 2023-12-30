@@ -4,7 +4,8 @@
         "appMotto": "[[Something catchy]]"
     },
     "library": {
-        "title": "Library"
+        "title": "Library",
+        "lastUpdated": "Last updated: {date} {time}"
     },
     "search": {
         "title": "Search",

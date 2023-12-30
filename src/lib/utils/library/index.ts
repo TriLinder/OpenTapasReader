@@ -1,6 +1,7 @@
 import { libraryStore } from "../../../stores";
 import { get } from "svelte/store";
 import { deleteMediaFromStroage } from "../media";
+import { getSeries } from "../api/series";
 import type { Series } from "$lib/types";
 
 export function addSeriesToLibrary(series: Series) {
@@ -25,4 +26,16 @@ export function removeSeriesFromLibrary(series: Series) {
     for (const episode of series.episodes) {
         deleteMediaFromStroage(episode.thumbnailUrl);
     }
+}
+
+export async function updateSeriesInLibrary() {
+    const libraryStoreValue = get(libraryStore);
+
+    for (const series of Object.values(libraryStoreValue.series)) {
+        libraryStoreValue.series[series.id] = await getSeries(series.id);
+    }
+
+    libraryStoreValue.lastUpdate = new Date().toString();
+
+    libraryStore.set(libraryStoreValue);
 }
