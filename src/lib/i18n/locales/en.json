@@ -5,7 +5,8 @@
     },
     "library": {
         "title": "Library",
-        "lastUpdated": "Last updated: {date} {time}"
+        "lastUpdated": "Last refreshed: {date} {time}",
+        "updateReminder": "Make sure to refresh your library periodically to see new episodes!"
     },
     "search": {
         "title": "Search",

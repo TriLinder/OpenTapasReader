@@ -15,6 +15,8 @@
 
     let isDrawerOpen = false;
 
+    $: timeSinceLastUpdate = new Date().getTime() - new Date($libraryStore.lastUpdate).getTime();
+
     function searchButtonClick() {
         $pageStateStore.currentPage = "search";
         commitToHistory();
@@ -30,6 +32,10 @@
 
     .content {
         margin-top: 70px;
+    }
+
+    .last-update-information {
+        margin-bottom: 15px;
     }
 
     .floating-search-button {
@@ -57,7 +63,14 @@
 </div>
 
 <div class="content">
-    <p>{$_("library.lastUpdated", {values: {date: $date(new Date($libraryStore.lastUpdate), {format: "long"}), time: $time(new Date($libraryStore.lastUpdate))}})}</p>
+    <div class="last-update-information">
+        <span>{$_("library.lastUpdated", {values: {date: $date(new Date($libraryStore.lastUpdate), {format: "long"}), time: $time(new Date($libraryStore.lastUpdate))}})}</span> <br>
+        
+        <!-- Reminder if over one day since last library update -->
+        {#if timeSinceLastUpdate > 24*60*60*1000}
+            <span><b>{$_("library.updateReminder")}</b></span>
+        {/if}
+    </div>
 
     <div class="series">
         {#each Object.values($libraryStore.series) as series}
