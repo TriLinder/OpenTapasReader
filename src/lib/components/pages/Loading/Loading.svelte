@@ -18,4 +18,29 @@
     });
 </script>
 
-<h1>LOADING..</h1>
+<style>
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100vw;
+        height: 100vh;
+        
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .word-mark-container {
+        width: 80vw;
+        max-width: 500px;
+        height: auto;
+    }
+</style>
+
+<div class="center">
+    <div class="word-mark-container">
+        <img src={"/wordmark.svg"} alt="Loading screen wordmark"/>
+    </div>
+</div>
