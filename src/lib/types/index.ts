@@ -24,6 +24,7 @@ export type UrlToHashStore = {
 
 export type LibraryStore = {
     dataTypeVersion: number;
+    lastUpdate: string;
     series: Record<string, Series>;
 }
 

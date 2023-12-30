@@ -49,6 +49,7 @@
             </Section>
 
             <Section align="end">
+                <IconButton class="material-icons" aria-label="Refresh series">refresh</IconButton>
             </Section>
         </Row>
     </TopAppBar>
