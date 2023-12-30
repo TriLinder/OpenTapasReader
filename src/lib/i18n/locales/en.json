@@ -28,6 +28,12 @@
         "continueToNextEpisodeButton": "Next episode"
     },
     "episodeComments": {
-        "title": "Comments"
+        "title": "Comments",
+        "loadNextPage": "Load More Comments"
+    },
+    "comment": {
+        "likeCount": "{likeCount} likes",
+        "showReplies": "Show replies ({replyCount})",
+        "hideReplies": "Hide replies ({replyCount})"
     }
 }
