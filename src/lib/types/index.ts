@@ -1,4 +1,10 @@
 // Stores
+export type ConfigurationStore = {
+    dataTypeVersion: number;
+    language: "en" | "cs";
+    showProfilePictures: boolean;
+}
+
 export type PageStateStore = {
     dataTypeVersion: number;
     currentPage: "library" | "settings" | "about" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";

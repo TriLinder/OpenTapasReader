@@ -1,7 +1,17 @@
 import { objectStore } from 'svelte-capacitor-store';
 import { writable } from 'svelte/store';
 
-import type { UrlToHashStore, LibraryStore, EpisodeStore, PageStateStore, PageStateHistoryStore } from '$lib/types';
+import type { ConfigurationStore, UrlToHashStore, LibraryStore, EpisodeStore, PageStateStore, PageStateHistoryStore } from '$lib/types';
+
+export const configurationStore = objectStore<ConfigurationStore>({
+    storeName: "tapasClientConfigurationStore",
+    initialValue: {
+        dataTypeVersion: 0,
+        language: "en",
+        showProfilePictures: true
+    },
+    persist: true
+});
 
 export const urlToHashStore = objectStore<UrlToHashStore>({
     storeName: "tapasClientUrlToHashStore",

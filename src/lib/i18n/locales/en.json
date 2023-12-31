@@ -9,7 +9,8 @@
         "updateReminder": "Make sure to refresh your library periodically to see new episodes!"
     },
     "settings": {
-        "title": "Settings"
+        "title": "Settings",
+        "language": "Language"
     },
     "about": {
         "title": "About",

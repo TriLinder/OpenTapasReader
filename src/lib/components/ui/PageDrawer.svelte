@@ -17,26 +17,22 @@
     type Page = {
         pageSlug: PageStateStore["currentPage"];
         icon: string;
-        label: string;
     }
 
     const pages: Page[] = [
         {
             pageSlug: "library",
-            icon: "view_agenda",
-            label: $_("library.title")
+            icon: "view_agenda"
         },
         {
             pageSlug: "settings",
-            icon: "settings",
-            label: "Settings"  
+            icon: "settings"
         },
         {
             pageSlug: "about",
-            icon: "info",
-            label: $_("about.title")
+            icon: "info"
         }
-    ]
+    ];
 </script>
 
 <style>
@@ -74,7 +70,7 @@
                 {#each pages as page (page.pageSlug)}
                     <Item on:click={function() {setPage(page.pageSlug);}} activated={$pageStateStore.currentPage == page.pageSlug}>
                         <Graphic class="material-icons" aria-hidden="true">{page.icon}</Graphic>
-                        <Text>{page.label}</Text>
+                        <Text>{$_(`${page.pageSlug}.title`)}</Text>
                     </Item>
                 {/each}
             </List>

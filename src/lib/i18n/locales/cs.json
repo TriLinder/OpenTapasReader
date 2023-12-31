@@ -1,0 +1,59 @@
+{
+    "general": {
+        "appName": "OpenTapasReader",
+        "appMotto": "Vaše komisky kdekoliv"
+    },
+    "library": {
+        "title": "Knihovna",
+        "lastUpdated": "Naposledy aktualizováno: {date} {time}",
+        "updateReminder": "Ujistěte se, že pravidelně aktualizujete knihovnu, abyste viděli nové epizody!"
+    },
+    "settings": {
+        "title": "Nastavení",
+        "language": "Jazyk"
+    },
+    "about": {
+        "title": "O aplikaci",
+        "downloadOfficalApp": "Stáhnout oficiální aplikaci",
+        "sourceCode": "Zdrojový kód"
+    },
+    "search": {
+        "title": "Vyhledávání",
+        "searchQuery": "Vyhledávání",
+        "messages": {
+            "noResults": "Žádné výsledky nalezeny.",
+            "queryTooShort": "Vložte alespoň {minimumCharacterCount} znaky."
+        }
+    },
+    "seriesDetail": {
+        "episodes": "epizody",
+        "info": "informace",
+        "description": "popis",
+        "creators": "tvůrci",
+        "tags": "tagy",
+        "episodeCount": "{count} epizod"
+    },
+    "episodeDetail": {
+        "description": "popis",
+        "continueToNextEpisodeText": "Pokračujte k další epizodě",
+        "continueToNextEpisodeButton": "Další epizode",
+        "notAvailableYet": "Tato epizoda ještě není dostupná. Vraťte se prosím později.",
+        "releaseDate": "<b>Datum vydání</b> {date} {time}"
+    },
+    "episodeComments": {
+        "title": "Komentáře"
+    },
+    "comments": {
+        "loadNextPage": "Načíst více komentářů",
+        "sortTypes": {
+            "best": "Nejlepší",
+            "newest": "Nejnovější",
+            "oldest": "Nejstarší"
+        }
+    },
+    "comment": {
+        "likeCount": "{likeCount} liků",
+        "showReplies": "Zobrazit odpovědi ({replyCount})",
+        "hideReplies": "Skrýt odpovědi ({replyCount})"
+    }
+}
