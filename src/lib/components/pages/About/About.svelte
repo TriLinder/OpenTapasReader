@@ -4,6 +4,7 @@
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
     import PageDrawer from "$lib/components/ui/PageDrawer.svelte";
+    import OpenDependencyAcknowledgmentsButton from "./components/OpenDependencyAcknowledgmentsButton.svelte";
 
     let isDrawerOpen = false;
 
@@ -76,5 +77,7 @@
 
         <a href="http://tapas.io/app" target="_blank" rel="noopener noreferrer">{$_("about.downloadOfficalApp")}</a>
         <a href="https://github.com/TriLinder/OpenTapasReader" target="_blank" rel="noopener noreferrer">{$_("about.sourceCode")}</a>
+
+        <OpenDependencyAcknowledgmentsButton/>
     </div>
 </div>

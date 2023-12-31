@@ -1,6 +1,7 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n';
 
+    import { commitToHistory } from '$lib/utils/page-history';
     import { pageStateStore } from "../../../stores";
     import type { PageStateStore } from '$lib/types';
 
@@ -12,6 +13,7 @@
     function setPage(page: PageStateStore["currentPage"]) {
         $pageStateStore.currentPage = page;
         isOpen = false;
+        commitToHistory();
     }
 
     type Page = {

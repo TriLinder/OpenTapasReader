@@ -13,6 +13,7 @@
     import Library from "$lib/components/pages/Library/Library.svelte";
     import Settings from "$lib/components/pages/Settings/Settings.svelte";
     import About from "$lib/components/pages/About/About.svelte";
+    import DependencyAcknowledgments from "$lib/components/pages/DependencyAcknowledgments/DependencyAcknowledgments.svelte";
     import Search from "$lib/components/pages/Search/Search.svelte";
     import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
     import EpisodeDetail from "$lib/components/pages/EpisodeDetail/EpisodeDetail.svelte";
@@ -39,6 +40,8 @@
     <Settings/>
 {:else if $pageStateStore.currentPage == "about"}
     <About/>
+{:else if $pageStateStore.currentPage == "dependencyAcknowledgments"}
+    <DependencyAcknowledgments/>
 {:else if $pageStateStore.currentPage == "search"}
     <Search/>
 {:else if $pageStateStore.currentPage == "seriesDetail"}

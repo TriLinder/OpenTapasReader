@@ -20,7 +20,14 @@
     "about": {
         "title": "O aplikaci",
         "downloadOfficalApp": "Stáhnout oficiální aplikaci",
-        "sourceCode": "Zdrojový kód"
+        "sourceCode": "Zdrojový kód",
+        "dependencyAcknowledgments": "Použité knihovny"
+    },
+    "dependencyAcknowledgments": {
+        "title": "Použité knihovny",
+        "author": "<b>Autor:</b> {author}",
+        "license": "<b>Licence:</b> {license}",
+        "version": "<b>Verze:</b> {version}"
     },
     "search": {
         "title": "Vyhledávání",

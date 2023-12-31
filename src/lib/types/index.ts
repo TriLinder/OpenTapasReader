@@ -7,7 +7,7 @@ export type ConfigurationStore = {
 
 export type PageStateStore = {
     dataTypeVersion: number;
-    currentPage: "library" | "settings" | "about" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
+    currentPage: "library" | "settings" | "about" | "dependencyAcknowledgments" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
     seriesDetailPage: {
         series: Series | null;
         reversed: boolean;

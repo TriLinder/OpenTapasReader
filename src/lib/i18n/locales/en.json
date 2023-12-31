@@ -20,7 +20,14 @@
     "about": {
         "title": "About",
         "downloadOfficalApp": "Download the offical app",
-        "sourceCode": "Source code"
+        "sourceCode": "Source code",
+        "dependencyAcknowledgments": "Dependency Acknowledgments"
+    },
+    "dependencyAcknowledgments": {
+        "title": "Dependency Acknowledgments",
+        "author": "<b>Author:</b> {author}",
+        "license": "<b>License:</b> {license}",
+        "version": "<b>Version:</b> {version}"
     },
     "search": {
         "title": "Search",
