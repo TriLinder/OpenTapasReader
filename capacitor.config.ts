@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.github.trilinder.tapasclient',
-  appName: 'TapasClient',
+  appName: 'OpenTapasReader',
   webDir: 'build',
   server: {
     androidScheme: 'https'
