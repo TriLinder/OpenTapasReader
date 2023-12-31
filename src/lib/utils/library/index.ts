@@ -1,6 +1,7 @@
 import { libraryStore } from "../../../stores";
 import { get } from "svelte/store";
 import { deleteMediaFromStroage } from "../media";
+import { deleteEpisodeFromStorage } from "../api/episode";
 import { getSeries } from "../api/series";
 import type { Series } from "$lib/types";
 
@@ -25,6 +26,11 @@ export function removeSeriesFromLibrary(series: Series) {
 
     for (const episode of series.episodes) {
         deleteMediaFromStroage(episode.thumbnailUrl);
+    }
+
+    // And delete all its episodes
+    for (const episode of series.episodes) {
+        deleteEpisodeFromStorage(episode.id);
     }
 }
 
