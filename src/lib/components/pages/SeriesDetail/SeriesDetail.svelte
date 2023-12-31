@@ -92,7 +92,9 @@
         </div>
 
         {#if activeTab == "episodes"}
-            <Episodes {series} beginningVerticalScrollPosition={$pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition} on:scroll={debouncedOnEpisodeListScroll} bind:reversed={$readEpisodesStore.series[series.id].episodeListReveresed}/>
+            {#if $readEpisodesStore.series[series.id]}
+                <Episodes {series} beginningVerticalScrollPosition={$pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition} on:scroll={debouncedOnEpisodeListScroll} bind:reversed={$readEpisodesStore.series[series.id].episodeListReveresed}/>
+            {/if}
         {:else if activeTab == "info"}
             <Info {series}/>
         {/if}

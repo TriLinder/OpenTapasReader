@@ -56,6 +56,8 @@
     {/each}
 </div>
 
-<div class="continue-reading">
-    <ContinueReadingPrompt episode={$readEpisodesStore.series[series.id]?.lastReadEpisode}/>
-</div>
+{#if $readEpisodesStore.series[series.id]}
+    <div class="continue-reading">
+        <ContinueReadingPrompt episode={$readEpisodesStore.series[series.id].lastReadEpisode}/>
+    </div>
+{/if}

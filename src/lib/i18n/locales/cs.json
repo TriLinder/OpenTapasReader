@@ -12,6 +12,7 @@
         "title": "Nastavení",
         "language": "Jazyk",
         "showProfilePictures": "Zobrazovat profilové obrázky",
+        "resetReadEpisodes": "Resetovat přečtené epizody",
         "deleteOfflineMedia": {
             "buttonLabel": "Smazat offline média",
             "confirmation": "Opravdu chcete smazat offline média? Všechny stažené epizody budou smazány."

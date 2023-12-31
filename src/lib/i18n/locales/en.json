@@ -12,6 +12,7 @@
         "title": "Settings",
         "language": "Language",
         "showProfilePictures": "Show profile pictures",
+        "resetReadEpisodes": "Reset read episodes",
         "deleteOfflineMedia": {
             "buttonLabel": "Delete offline media",
             "confirmation": "Are you sure you want to delete offline media? All downloaded comic episodes will be removed."

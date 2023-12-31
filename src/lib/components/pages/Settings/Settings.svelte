@@ -8,6 +8,7 @@
 
     import LanguageSelect from "./components/LanguageSelect.svelte";
     import ShowProfilePicturesSwitch from "./components/ShowProfilePicturesSwitch.svelte";
+    import ResetReadEpisodesButton from "./components/ResetReadEpisodesButton.svelte";
     import DeleteOfflineMediaButton from "./components/DeleteOfflineMediaButton.svelte";
 
     let isDrawerOpen = false;
@@ -27,6 +28,7 @@
     .settings {
         display: flex;
         flex-direction: column;
+        gap: 15px;
     }
 </style>
 
@@ -50,6 +52,7 @@
             <div class="settings">
                 <LanguageSelect/>
                 <ShowProfilePicturesSwitch/>
+                <ResetReadEpisodesButton/>
                 <DeleteOfflineMediaButton/>
             </div>
         </Content>
