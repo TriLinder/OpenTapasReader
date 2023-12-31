@@ -13,7 +13,6 @@ export type PageStateStore = {
     currentPage: "library" | "settings" | "about" | "dependencyAcknowledgments" | "search" | "seriesDetail" | "episodeDetail" | "episodeComments";
     seriesDetailPage: {
         series: Series | null; // Details of the current series being viewed
-        reversed: boolean; // Flag indicating the order of episode list
         episodeListVerticalScrollPosition: number; // Scroll position in the episode list
     };
     episodeDetailPageEpsiode: { seriesId: number; episodeId: number } | null; // Currently viewed episode details
@@ -52,6 +51,7 @@ export type ReadEpisodesStore = {
     series: Record<number, {
         lastReadEpisode: Episode | null; // Last read episode of the series
         readEpisodes: number[]; // Array of read episode IDs for the series
+        episodeListReveresed: boolean; // Flag indicating the order of episode list
     }>;
 }
 

@@ -57,7 +57,6 @@ export const pageStateStore = objectStore<PageStateStore>({
         currentPage: "library",
         seriesDetailPage: {
             series: null,
-            reversed: false,
             episodeListVerticalScrollPosition: 0
         },
         episodeDetailPageEpsiode: null,

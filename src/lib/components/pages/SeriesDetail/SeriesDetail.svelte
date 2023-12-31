@@ -31,7 +31,7 @@
 
     onMount(function() {
         if (!(series.id in $readEpisodesStore.series)) {
-            $readEpisodesStore.series[series.id] = {lastReadEpisode: null, readEpisodes: []}
+            $readEpisodesStore.series[series.id] = {lastReadEpisode: null, readEpisodes: [], episodeListReveresed: false}
         }
     });
 </script>
@@ -92,7 +92,7 @@
         </div>
 
         {#if activeTab == "episodes"}
-            <Episodes {series} beginningVerticalScrollPosition={$pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition} on:scroll={debouncedOnEpisodeListScroll} bind:reversed={$pageStateStore.seriesDetailPage.reversed}/>
+            <Episodes {series} beginningVerticalScrollPosition={$pageStateStore.seriesDetailPage.episodeListVerticalScrollPosition} on:scroll={debouncedOnEpisodeListScroll} bind:reversed={$readEpisodesStore.series[series.id].episodeListReveresed}/>
         {:else if activeTab == "info"}
             <Info {series}/>
         {/if}
