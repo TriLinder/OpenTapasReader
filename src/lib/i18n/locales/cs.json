@@ -10,7 +10,8 @@
     },
     "settings": {
         "title": "Nastavení",
-        "language": "Jazyk"
+        "language": "Jazyk",
+        "showProfilePictures": "Zobrazovat profilové obrázky"
     },
     "about": {
         "title": "O aplikaci",

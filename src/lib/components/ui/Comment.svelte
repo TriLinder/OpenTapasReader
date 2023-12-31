@@ -1,5 +1,6 @@
 <script lang="ts">
     import { _, date, number } from "svelte-i18n";
+    import { configurationStore } from "../../../stores";
     import type { Comment } from "$lib/types";
     
     import Ripple from '@smui/ripple';
@@ -62,8 +63,10 @@
 <div class="content">
     <div class="comment">
         <div class="info">
-            <img class="profile-picture" src={comment.creator.profilePictureUrl} alt={`${comment.creator.displayName}'s profile picture`} />
-            
+            {#if $configurationStore.showProfilePictures}
+                <img class="profile-picture" src={comment.creator.profilePictureUrl} alt={`${comment.creator.displayName}'s profile picture`} />
+            {/if}
+
             <div>
                 <span class="username">{comment.creator.displayName}</span> <br>
                 <span class="creation-date">{$date(new Date(comment.creationDate), {format: "long"})}</span>

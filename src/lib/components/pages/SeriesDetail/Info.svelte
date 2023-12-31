@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
-    import { libraryStore } from "../../../../stores";
+    import { libraryStore, configurationStore } from "../../../../stores";
     import type { Series } from "$lib/types";
 
     import Image from "$lib/components/media/Image.svelte";
@@ -91,9 +91,11 @@
     <div class="creators">
         {#each series.creators as creator}
             <div class="creator">
-                <div class="profile-picture">
-                    <Image src={creator.profilePictureUrl} storeOffline={isSeriesInLibrary}/>
-                </div>
+                {#if $configurationStore.showProfilePictures}
+                    <div class="profile-picture">
+                        <Image src={creator.profilePictureUrl} storeOffline={isSeriesInLibrary}/>
+                    </div>
+                {/if}
                 
                 <span>{creator.displayName}</span>
             </div>

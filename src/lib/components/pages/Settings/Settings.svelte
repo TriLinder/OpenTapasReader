@@ -7,6 +7,7 @@
     import PageDrawer from "$lib/components/ui/PageDrawer.svelte";
 
     import LanguageSelect from "./components/LanguageSelect.svelte";
+    import ShowProfilePicturesSwitch from "./components/ShowProfilePicturesSwitch.svelte";
 
     let isDrawerOpen = false;
 </script>
@@ -41,7 +42,8 @@
         <PaperTitle>{$_("settings.title")}</PaperTitle>
         <Content>
             <div class="settings">
-                <LanguageSelect/>
+                <LanguageSelect/> <br>
+                <ShowProfilePicturesSwitch/>
             </div>
         </Content>
     </Paper>
