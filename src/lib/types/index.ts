@@ -60,6 +60,7 @@ export type Episode = {
     title: string;
     creationDate: string;
     scheduledDate: string | null;
+    isFree: boolean;
     thumbnailUrl: string;
     description: string;
     commentCount: number;

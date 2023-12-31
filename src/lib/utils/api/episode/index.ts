@@ -36,6 +36,7 @@ export async function loadEpisode(seriesId: number, episodeId: number, storeOffl
         title: response.title,
         creationDate: response.created_date,
         scheduledDate: response.scheduled_date,
+        isFree: response.free,
         thumbnailUrl: response.thumb.file_url,
         description: response.description,
         commentCount: response.comment_cnt,

@@ -15,7 +15,7 @@
     import Image from "$lib/components/media/Image.svelte";
 
     let episode: Episode | null = null;
-    $: isEpisodeAvailable = episode && (!episode.scheduledDate || new Date().getTime() > new Date(episode.scheduledDate).getTime())
+    $: isEpisodeAvailable = episode && episode.isFree && (!episode.scheduledDate || new Date().getTime() > new Date(episode.scheduledDate).getTime());
 
     async function load() {
         try {

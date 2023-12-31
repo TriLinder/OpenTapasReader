@@ -45,6 +45,7 @@ export async function getEpisodes(seriesId: number): Promise<Episode[]> {
             title: episode.title,
             creationDate: episode.created_date,
             scheduledDate: episode.scheduled_date,
+            isFree: episode.free,
             thumbnailUrl: episode.thumb.file_url,
             description: "",
             commentCount: -1,
