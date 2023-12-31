@@ -11,8 +11,8 @@
     import Tab, { Label } from '@smui/tab';
     import TabBar from '@smui/tab-bar';
 
-    import Episodes from "./Episodes.svelte";
-    import Info from "./Info.svelte";
+    import Episodes from "./tabs/Episodes.svelte";
+    import Info from "./tabs/Info.svelte";
 
     let activeTab = "episodes";
     

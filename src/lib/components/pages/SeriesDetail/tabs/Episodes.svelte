@@ -2,7 +2,7 @@
     import { _ } from "svelte-i18n";
 
     import { onMount } from "svelte";
-    import { libraryStore } from "../../../../stores";
+    import { libraryStore } from "../../../../../stores";
     import type { Series, Episode } from "$lib/types";
 
     import IconButton, { Icon } from "@smui/icon-button";

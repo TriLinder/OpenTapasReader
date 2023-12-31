@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
-    import { libraryStore, configurationStore } from "../../../../stores";
+    import { libraryStore, configurationStore } from "../../../../../stores";
     import type { Series } from "$lib/types";
 
     import Image from "$lib/components/media/Image.svelte";
