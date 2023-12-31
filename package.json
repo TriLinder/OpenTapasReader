@@ -8,8 +8,9 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"prepare": "yarn run smui-theme",
-		"smui-theme": "smui-theme compile static/smui.css -i src/theme"
+		"prepare": "npm run smui-theme && npm run generate-dependencies-acknowledgment ",
+		"smui-theme": "smui-theme compile static/smui.css -i src/theme",
+		"generate-dependencies-acknowledgment": "node scripts/generate-dependencies-acknowledgment.js"
 	},
 	"devDependencies": {
 		"@capacitor/assets": "^3.0.4",
