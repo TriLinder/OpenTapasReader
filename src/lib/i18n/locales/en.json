@@ -11,7 +11,11 @@
     "settings": {
         "title": "Settings",
         "language": "Language",
-        "showProfilePictures": "Show profile pictures"
+        "showProfilePictures": "Show profile pictures",
+        "deleteOfflineMedia": {
+            "buttonLabel": "Delete offline media",
+            "confirmation": "Are you sure you want to delete offline media? All downloaded comic episodes will be removed."
+        }
     },
     "about": {
         "title": "About",

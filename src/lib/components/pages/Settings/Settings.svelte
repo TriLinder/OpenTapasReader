@@ -8,6 +8,7 @@
 
     import LanguageSelect from "./components/LanguageSelect.svelte";
     import ShowProfilePicturesSwitch from "./components/ShowProfilePicturesSwitch.svelte";
+    import DeleteOfflineMediaButton from "./components/DeleteOfflineMediaButton.svelte";
 
     let isDrawerOpen = false;
 </script>
@@ -21,6 +22,11 @@
 
     .content {
         margin-top: 60px;
+    }
+
+    .settings {
+        display: flex;
+        flex-direction: column;
     }
 </style>
 
@@ -42,8 +48,9 @@
         <PaperTitle>{$_("settings.title")}</PaperTitle>
         <Content>
             <div class="settings">
-                <LanguageSelect/> <br>
+                <LanguageSelect/>
                 <ShowProfilePicturesSwitch/>
+                <DeleteOfflineMediaButton/>
             </div>
         </Content>
     </Paper>

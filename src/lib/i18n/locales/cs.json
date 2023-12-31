@@ -11,7 +11,11 @@
     "settings": {
         "title": "Nastavení",
         "language": "Jazyk",
-        "showProfilePictures": "Zobrazovat profilové obrázky"
+        "showProfilePictures": "Zobrazovat profilové obrázky",
+        "deleteOfflineMedia": {
+            "buttonLabel": "Smazat offline média",
+            "confirmation": "Opravdu chcete smazat offline média? Všechny stažené epizody budou smazány."
+        }
     },
     "about": {
         "title": "O aplikaci",

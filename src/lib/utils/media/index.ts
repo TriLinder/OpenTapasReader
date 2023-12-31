@@ -100,3 +100,9 @@ export async function deleteMediaFromStroage(url: string) {
         urlToHashStore.set(urlToHashStoreValue);
     }
 }
+
+export async function deleteAllMediaFromStorage() {
+    for (const url of Object.keys(get(urlToHashStore))) {
+        await deleteMediaFromStroage(url);
+    }
+}
