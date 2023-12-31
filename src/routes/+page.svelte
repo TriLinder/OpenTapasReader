@@ -11,6 +11,7 @@
 
     import Loading from "$lib/components/pages/Loading/Loading.svelte";
     import Library from "$lib/components/pages/Library/Library.svelte";
+    import Settings from "$lib/components/pages/Settings/Settings.svelte";
     import About from "$lib/components/pages/About/About.svelte";
     import Search from "$lib/components/pages/Search/Search.svelte";
     import SeriesDetail from "$lib/components/pages/SeriesDetail/SeriesDetail.svelte";
@@ -34,6 +35,8 @@
     <Loading/>
 {:else if $pageStateStore.currentPage == "library"}
     <Library/>
+{:else if $pageStateStore.currentPage == "settings"}
+    <Settings/>
 {:else if $pageStateStore.currentPage == "about"}
     <About/>
 {:else if $pageStateStore.currentPage == "search"}

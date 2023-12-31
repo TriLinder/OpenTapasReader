@@ -27,6 +27,11 @@
             label: $_("library.title")
         },
         {
+            pageSlug: "settings",
+            icon: "settings",
+            label: "Settings"  
+        },
+        {
             pageSlug: "about",
             icon: "info",
             label: $_("about.title")

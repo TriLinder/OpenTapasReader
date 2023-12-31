@@ -74,7 +74,7 @@
 
         <hr>
 
-        <a href="http://tapas.io/app" target="_blank" rel="noopener noreferrer">Download the offical app</a>
-        <a href="https://github.com/TriLinder/OpenTapasReader" target="_blank" rel="noopener noreferrer">Source code</a>
+        <a href="http://tapas.io/app" target="_blank" rel="noopener noreferrer">{$_("about.downloadOfficalApp")}</a>
+        <a href="https://github.com/TriLinder/OpenTapasReader" target="_blank" rel="noopener noreferrer">{$_("about.sourceCode")}</a>
     </div>
 </div>

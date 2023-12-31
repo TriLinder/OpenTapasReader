@@ -8,8 +8,13 @@
         "lastUpdated": "Last refreshed: {date} {time}",
         "updateReminder": "Make sure to refresh your library periodically to see new episodes!"
     },
+    "settings": {
+        "title": "Settings"
+    },
     "about": {
-        "title": "About"
+        "title": "About",
+        "downloadOfficalApp": "Download the offical app",
+        "sourceCode": "Source code"
     },
     "search": {
         "title": "Search",
