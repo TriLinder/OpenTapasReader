@@ -2,11 +2,12 @@
     import { _ } from "svelte-i18n";
 
     import { onMount } from "svelte";
-    import { libraryStore } from "../../../../../stores";
+    import { libraryStore, readEpisodesStore } from "../../../../../stores";
     import type { Series, Episode } from "$lib/types";
 
     import IconButton, { Icon } from "@smui/icon-button";
     import EpisodeCard from "$lib/components/ui/EpisodeCard.svelte";
+    import ContinueReadingPrompt from "$lib/components/pages/SeriesDetail/components/ContinueReadingPrompt.svelte";
 
     export let series: Series;
     export let reversed = true;
@@ -53,4 +54,8 @@
     {#each episodes as episode (episode.id)}
         <EpisodeCard {episode} storeThumbmnailOffline={isSeriesInLibrary}/>
     {/each}
+</div>
+
+<div class="continue-reading">
+    <ContinueReadingPrompt episode={$readEpisodesStore.series[series.id]?.lastReadEpisode}/>
 </div>

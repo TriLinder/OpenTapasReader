@@ -43,7 +43,8 @@
         "description": "popis",
         "creators": "tvůrci",
         "tags": "tagy",
-        "episodeCount": "{count} epizod"
+        "episodeCount": "{count} epizod",
+        "continue": "pokračovat"
     },
     "episodeDetail": {
         "description": "popis",

@@ -43,7 +43,8 @@
         "description": "description",
         "creators": "creators",
         "tags": "tags",
-        "episodeCount": "{count} episodes"
+        "episodeCount": "{count} episodes",
+        "continue": "continue"
     },
     "episodeDetail": {
         "description": "description",

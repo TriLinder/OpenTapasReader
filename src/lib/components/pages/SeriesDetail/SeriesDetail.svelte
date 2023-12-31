@@ -3,8 +3,9 @@
 
     import debounce from "lodash.debounce";
     import { goBack, updateCurrentState } from "$lib/utils/page-history";
-    import { pageStateStore, libraryStore } from "../../../../stores";
+    import { pageStateStore, libraryStore, readEpisodesStore } from "../../../../stores";
     import { addSeriesToLibrary, removeSeriesFromLibrary } from "$lib/utils/library";
+    import { onMount } from "svelte";
 
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
@@ -27,6 +28,12 @@
     }
 
     const debouncedOnEpisodeListScroll = debounce(onEpisodeListScroll, 500);
+
+    onMount(function() {
+        if (!(series.id in $readEpisodesStore.series)) {
+            $readEpisodesStore.series[series.id] = {lastReadEpisode: null, readEpisodes: []}
+        }
+    });
 </script>
 
 <style>

@@ -8,11 +8,13 @@
     import Lazy from "svelte-lazy";
 
     import { commitToHistory } from '$lib/utils/page-history';
-    import { pageStateStore } from '../../../stores';
+    import { pageStateStore, readEpisodesStore } from '../../../stores';
     import type { Episode } from "$lib/types";
 
     export let episode: Episode;
     export let storeThumbmnailOffline = false;
+
+    $: hasBeenRead = $readEpisodesStore.series[episode.seriesId]?.readEpisodes.includes(episode.id);
 
     function onClick() {
         $pageStateStore.currentPage = "episodeDetail";
@@ -62,11 +64,16 @@
         display: flex;
         flex-direction: row;
     }
+
+    .read {
+        filter: brightness(0.5);
+        background-color: white;
+    }
 </style>
 
 <div class="series-card">
     <Lazy>
-        <div class="content" use:Ripple={{ surface: true }} on:click={onClick} on:keypress tabindex="0" role="button">
+        <div class="content" class:read={hasBeenRead} use:Ripple={{ surface: true }} on:click={onClick} on:keypress tabindex="0" role="button">
             <div class="left-side">
                 <div class="thumbnail">
                     <Image src={episode.thumbnailUrl} storeOffline={storeThumbmnailOffline}/>
