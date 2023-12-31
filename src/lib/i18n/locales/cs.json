@@ -22,6 +22,7 @@
         "title": "O aplikaci",
         "downloadOfficalApp": "Stáhnout oficiální aplikaci",
         "sourceCode": "Zdrojový kód",
+        "version": "<b>Verze:</b> {version}",
         "dependencyAcknowledgments": "Použité knihovny"
     },
     "dependencyAcknowledgments": {

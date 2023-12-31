@@ -1,14 +1,24 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
+    import { App } from "@capacitor/app";
+    import { onMount } from "svelte";
+
     import TopAppBar, { Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
     import PageDrawer from "$lib/components/ui/PageDrawer.svelte";
     import OpenDependencyAcknowledgmentsButton from "./components/OpenDependencyAcknowledgmentsButton.svelte";
 
+    let appVersion: string | undefined = undefined;
     let isDrawerOpen = false;
 
     const isPrideMonth = (new Date().getMonth() + 1) == 6; // June, the sixth month, is pride month
+
+    onMount(async function() {
+        const appInfo = await App.getInfo();
+
+        appVersion = `${appInfo.version}-${appInfo.build}`;
+    });
 </script>
 
 <style>
@@ -77,6 +87,10 @@
 
         <a href="http://tapas.io/app" target="_blank" rel="noopener noreferrer">{$_("about.downloadOfficalApp")}</a>
         <a href="https://github.com/TriLinder/OpenTapasReader" target="_blank" rel="noopener noreferrer">{$_("about.sourceCode")}</a>
+
+        {#if appVersion}
+            <span>{@html $_("about.version", {values: {version: appVersion}})}</span>
+        {/if}
 
         <OpenDependencyAcknowledgmentsButton/>
     </div>
