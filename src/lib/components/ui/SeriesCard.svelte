@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _, date } from 'svelte-i18n';
+
     import Ripple from '@smui/ripple';
     import IconButton from "@smui/icon-button";
     import Image from "../media/Image.svelte";
@@ -10,7 +12,7 @@
     export let series: Series;
     export let storeThumbmnailOffline = false;
 
-    $: creatorNames = series.creators.map(user => user.displayName).join(', ');
+    $: latestEpisodeDate = new Date(Array.from(series.episodes).pop()?.creationDate!);
 
     function onClick() {
         $pageStateStore.currentPage = "seriesDetail";
@@ -44,6 +46,11 @@
         justify-content: center;
     }
 
+    .latest-episode-text {
+        font-size: 0.75em;
+        color: gray;
+    }
+
     h2 {
         margin: 0;
     }
@@ -67,7 +74,7 @@
 
         <div class="text">
             <h2>{series.title}</h2>
-            <span>{creatorNames}</span>
+            <span class="latest-episode-text">{$_("seriesCard.latestEpisodeDate", {values: {date: $date(latestEpisodeDate, {format: "long"})}})}</span>
         </div>
     </div>
 

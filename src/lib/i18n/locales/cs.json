@@ -38,6 +38,9 @@
             "queryTooShort": "Vložte alespoň {minimumCharacterCount} znaky."
         }
     },
+    "seriesCard": {
+      "latestEpisodeDate": "Nejnovější epizoda: {date}"  
+    },
     "seriesDetail": {
         "episodes": "epizody",
         "info": "informace",

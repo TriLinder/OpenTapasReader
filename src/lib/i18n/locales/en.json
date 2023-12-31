@@ -38,6 +38,9 @@
             "queryTooShort": "Please enter at least {minimumCharacterCount} characters."
         }
     },
+    "seriesCard": {
+        "latestEpisodeDate": "Latest episode: {date}"  
+    },
     "seriesDetail": {
         "episodes": "episodes",
         "info": "info",
