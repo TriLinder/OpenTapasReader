@@ -1,38 +1,46 @@
-# create-svelte
+<h1 align="center">OpenTapasReader</h1>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+<p align="center">
+    OpenTapasReader is an open-source Android client for viewing <a href="https://tapas.io/">Tapas.io</a> comics. <br>
+    Built with <a href="https://svelte.dev/">Svelte</a> and <a href="https://capacitorjs.com/">Capacitor</a>.
+</p>
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Local comic library
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Viewing comics and comic episodes
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- Downloading episodes for offline use
 
-## Developing
+- Viewing comments
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- English and Czech language support (contributions are welcome)
 
-```bash
-npm run dev
+## Installation
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- Download and install an `.apk` file from the [Releases](https://github.com/TriLinder/OpenTapasReader/releases/latest) page
+- Alternatively, you can build the app from source (see below)
+
+## Screenshots
+
+<p align="center">
+  <img alt="Library page" src="README_ASSETS/screenshots/1.png" width="200" />
+  <img alt="Episode list view showing downloaded episodes" src="README_ASSETS/screenshots/2.png" width="200" /> 
+  <img alt="Episode's comments section" src="README_ASSETS/screenshots/3.png" width="200" />
+  <img alt="Library page in Czech language" src="README_ASSETS/screenshots/4.png" width="200" />
+</p>
 
 ## Building
 
-To create a production version of your app:
+Prerequisites: Android Studio and Node.js
 
-```bash
-npm run build
-```
+1. Clone the repository
 
-You can preview the production build with `npm run preview`.
+2. Run `npm install` in the directory to install project dependencies
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+3. Run `npm run dev` to debug the application in a web browser (You must temporarily [disable CORS protection](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) for the application to work properly. **Please make sure to enable it again as soon as possible.**)
+
+4. Run `npm run build && npx cap sync && npx cap open android` to build the web files and open the application in Android studio
+
+5. Build the application in Android Studio
