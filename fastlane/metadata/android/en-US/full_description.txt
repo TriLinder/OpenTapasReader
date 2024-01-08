@@ -1,0 +1,8 @@
+Read Tapas.io comics effortlessly.
+
+Features:
+<ul>
+  <li>Viewing comics and comic episodes</li>
+  <li>Downloading episodes for offline use</li>
+  <li>Viewing comments</li>
+</ul>
