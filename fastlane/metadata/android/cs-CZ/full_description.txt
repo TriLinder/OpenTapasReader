@@ -1,0 +1,8 @@
+Čtěte komiksy Tapas.io snadně.
+
+Features:
+<ul>
+  <li>Prohlížení komiksů a komiksových epizod</li>
+  <li>Stahování epizod pro použití offline</li>
+  <li>Čtení komentářů</li>
+</ul>
