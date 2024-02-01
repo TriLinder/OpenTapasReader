@@ -20,6 +20,7 @@
 ## Installation
 
 - Download and install an `.apk` file from the [Releases](https://github.com/TriLinder/OpenTapasReader/releases/latest) page
+- Download, install and keep updated the app through [F-Droid](https://f-droid.org/packages/com.github.trilinder.tapasclient/)
 - Alternatively, you can build the app from source (see below)
 
 ## Screenshots
