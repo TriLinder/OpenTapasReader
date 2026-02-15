@@ -8,6 +8,9 @@
     </a>
 </p>
 
+> [!WARNING]
+> Due to changes to Tapas.io's API, OpenTapasReader is no longer functional, and as of early 2026, I've decided to archive the repository. Please switch to using the [official Tapas.io application](https://play.google.com/store/apps/details?id=com.tapastic) instead.
+
 > [!NOTE]
 > I do not condone piracy in any way, and this application does not allow you to pirate content. Only use it at your own risk and for legitimate use. If you find the application to be infringing copyright or violating the Terms of Service, please do not hesitate to contact me either through a [GitHub issue](https://github.com/TriLinder/OpenTapasReader/issues/new) or by email (opentapasreader.fifty411@aleeas.com) and I will gladly take the application down. I always recommend using the [official Tapas.io application](https://play.google.com/store/apps/details?id=com.tapastic).
 
